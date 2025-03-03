@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear Ticket</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/styles/bootstrap.scss"> <!-- Añade esta línea -->
+</head>
+
+<body>
+  <header>
+    <div class="container ">
+      <div class="row align-items-center justify-content-between py-2">
+        <!-- Logo -->
+        <div class="col-2 text-center">
+          <img src="../public/logo.png" alt="Logo" style="width: 70px;">
+        </div>
+        <!-- Barra de búsqueda centrada -->
+        <div class="col-8">
+          <input type="text" class="form-control" placeholder="Buscar" style="width: 100%; border-radius: 30px;">
+        </div>
+        <!-- Icono de cuenta -->
+        <div class="col-2 text-center">
+          <img src="../public/icons/cuenta.png" style="width: 70px;">
+          <a href="#">Usuario</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card p-4 shadow">
+            <h3 class="text-center mb-4">Crear un Ticket</h3>
+            <form>
+              <div class="form-group">
+                <label for="titulo">Título</label>
+                <input type="text" class="form-control" id="titulo" placeholder="Ingrese el título" required>
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" rows="4" placeholder="Ingrese la descripción" required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+
+
+
+
+  <footer class="bg-light py-4">
+    <div class="container">
+      <div class="row align-items-start justify-content-between">
+        <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
+            <h5>Contacto</h5>
+          <a href="#" class="d-block mt-2">Crea un ticket</a>
+          <a href="mailto:empresaventa@gmail.com" class="d-block">empresaventa@gmail.com</a>
+        </div>
+        <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
+          <h5>Enlaces</h5>
+          <a href="#" class="d-block">Sobre nosotros</a>
+          <a href="#" class="d-block">Trabaja con nosotros</a>
+          <a href="#" class="d-block">Aplicación móvil</a>
+          <a href="#" class="d-block">Política de privacidad</a>
+          <a href="#" class="d-block">Términos y condiciones</a>
+        </div>
+        <div class="col-md-4 text-center text-md-left">
+          <h5>Síguenos</h5>
+          <div class="d-flex justify-content-center justify-content-md-start">
+            <a href="#"><img src="../public/icons/instagram.png" alt="instagram" class="mx-2" style="width: 40px;"></a>
+            <a href="#"><img src="../public/icons/facebook.png" alt="facebook" class="mx-2" style="width: 40px;"></a>
+            <a href="#"><img src="../public/icons/youtube.png" alt="youtube" class="mx-2" style="width: 40px;"></a>
+            <a href="#"><img src="../public/icons/twitter.png" alt="twitter" class="mx-2" style="width: 40px;"></a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col text-center">
+          <p class="mb-0">&copy; 2025 Empresa de Venta. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer> 
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
