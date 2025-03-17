@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crear Producto</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -23,7 +23,7 @@
         </div>
         <!-- Icono de cuenta -->
         <div class="col-2 text-center">
-          <img src="../public/icons/cuenta.png" style="width: 70px;">
+          <img src="../public/icons/cuenta.png" style="width: 70px;" alt="Icono de cuenta">
           <a href="#">Usuario</a>
         </div>
       </div>
@@ -53,13 +53,15 @@
             <!-- Descripción del producto -->
             <div class="form-group">
               <label for="description">Descripción del Producto</label>
-              <textarea class="form-control" id="description" rows="4" placeholder="Detalles del producto" required></textarea>
+              <textarea class="form-control" id="description" rows="4" placeholder="Detalles del producto"
+                required></textarea>
             </div>
 
             <!-- Habilitar venta por envío -->
             <div class="form-group">
               <label for="shipping">¿Habilitar venta por envío?</label>
               <select class="form-control" id="shipping" required>
+                <option value="" disabled selected>Selecciona una opción</option>
                 <option value="yes">Sí</option>
                 <option value="no">No</option>
               </select>
@@ -67,26 +69,27 @@
 
             <!-- Etiquetas -->
             <div class="form-group">
-              <label for="tags">Tags</label>
+              <p>Tags</p>
               <div class="tags-container">
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="merch">Merch</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="pc">PC</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="comics">Comics</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="figuras">Figuras</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="perifericos">Periféricos</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="consolas">Consolas</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="ropa">Ropa</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="juegos">Juegos de mesa</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="cuentas">Cuentas</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="decoracion">Decoración</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="videojuegos">Videojuegos</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="promocion">Promoción</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="negociacion">Negociación</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="buenestado">Buen estado</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="nuevo">Nuevo</button>
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag" id="oferta">Oferta 2x1</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Merch</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">PC</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Comics</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Figuras</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Periféricos</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Consolas</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Ropa</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Juegos de mesa</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Cuentas</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Decoración</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Videojuegos</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Promoción</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Negociación</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Buen estado</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Nuevo</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm m-1 tag">Oferta 2x1</button>
               </div>
             </div>
+
 
             <!-- Precio -->
             <div class="form-group">
@@ -108,7 +111,7 @@
     <div class="container">
       <div class="row align-items-start justify-content-between">
         <div class="col-md-4 text-center text-md-left mb-3 mb-md-0">
-            <h5>Contacto</h5>
+          <h5>Contacto</h5>
           <a href="#" class="d-block mt-2">Crea un ticket</a>
           <a href="mailto:empresaventa@gmail.com" class="d-block">empresaventa@gmail.com</a>
         </div>
