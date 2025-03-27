@@ -54,151 +54,153 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="carousel my-4 row align-items-center">
-                    {/* Previous Button */}
-                    <button className="btn btn-primary col-2 col-md-1 d-flex justify-content-center align-items-center">
-                        <i className="bi bi-arrow-left"></i>
-                    </button>
-                    {/* Title in the Center */}
-                    <h1 className="col-8 col-md-10 text-center" style={{ fontSize: '50px' }}>Componentes de ordenadores <br />de todo tipo</h1>
-                    {/* Next Button */}
-                    <button className="btn btn-primary col-2 col-md-1 d-flex justify-content-center align-items-center">
-                        <i className="bi bi-arrow-right"></i>
-                    </button>
-                </div>
+                <div className="carousel my-4 d-flex align-items-center justify-content-between">
+                {/* Botón Anterior */}
+                <button className="btn btn-primary d-flex justify-content-center align-items-center">
+                    <i className="bi bi-arrow-left"></i>
+                </button>
+                {/* Título en el Centro */}
+                <h1 className="text-center mx-auto" style={{ fontSize: '50px', color: '#333' }}>
+                    Componentes de ordenadores <br /> de todo tipo
+                </h1>
+                {/* Botón Siguiente */}
+                <button className="btn btn-primary d-flex justify-content-center align-items-center">
+                    <i className="bi bi-arrow-right"></i>
+                </button>
+            </div>
 
                 <section className="destacados container my-4">
-                    <h1 className="mb-3">Destacados</h1>
-                    <div className="row">
+                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Destacados</h1>
+                    <div className="row g-4">
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 1" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 1" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 2" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 2" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 3" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 3" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 4" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 4" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="parati container my-4">
-                    <h1 className="mb-3">Para Ti</h1>
-                    <div className="row">
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Para Ti 1" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Para Ti 2" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Para Ti 3" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Para Ti 4" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section className="ofertas container my-4">
-                    <h1 className="mb-3">Ofertas</h1>
-                    <div className="row">
+                <section className="destacados container my-4">
+                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Para ti</h1>
+                    <div className="row g-4">
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Oferta 1" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 1" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-danger">79.99€</h3>
-                                    <p className="card-text">Descripción del producto con descuento.</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Oferta 2" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 2" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-danger">79.99€</h3>
-                                    <p className="card-text">Descripción del producto con descuento.</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Oferta 3" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 3" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-danger">79.99€</h3>
-                                    <p className="card-text">Descripción del producto con descuento.</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
                         <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Oferta 4" />
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 4" />
                                 <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-danger">79.99€</h3>
-                                    <p className="card-text">Descripción del producto con descuento.</p>
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">99.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="destacados container my-4">
+                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Ofertas</h1>
+                    <div className="row g-4">
+                        <div className="col-12 col-sm-6 col-md-3">
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 1" />
+                                <div className="card-body text-center">
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">79.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-3">
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 2" />
+                                <div className="card-body text-center">
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">79.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-3">
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 3" />
+                                <div className="card-body text-center">
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">79.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-12 col-sm-6 col-md-3">
+                            <div className="card shadow-sm border-0">
+                                <img src="../public/gameboy.jpg" className="card-img-top rounded-top" alt="Producto Destacado 4" />
+                                <div className="card-body text-center">
+                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                    <h3 className="text-primary fw-bold">79.99€</h3>
+                                    <p className="card-text text-muted">Descripción del producto</p>
                                 </div>
                             </div>
                         </div>
