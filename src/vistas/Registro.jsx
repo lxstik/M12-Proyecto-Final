@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Registro() {
     const styles = {
         body: {
@@ -42,7 +44,7 @@ export default function Registro() {
                     <button type="submit" className="btn btn-primary w-100">Registrarse</button>
                 </form>
                 <div className="text-center mt-3">
-                    <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
+                    <Link to="/Login" className="text-decoration-none">¿Ya tienes una cuenta? Inicia sesión</Link>
                 </div>
             </div>
         </div>

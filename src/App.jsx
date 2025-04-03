@@ -15,6 +15,8 @@ import TerminosCondiciones from './vistas/TerminosCondiciones';
 import PoliticaPrivacidad from './vistas/PoliticaPrivacidad';
 import TrabajaConNosotros from './vistas/TrabajaConNosotros';
 import CrearTicket from './vistas/CrearTicket';
+import Registro from './vistas/Registro';
+import Login from './vistas/Login';
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
         <Route path='/PoliticaPrivacidad' element={<PoliticaPrivacidad />} />
         <Route path='/TrabajaConNosotros' element={<TrabajaConNosotros />} />
         <Route path='/CrearTicket' element={<CrearTicket />} />
+        <Route path='/Login' element={<Login/>}/>
+        <Route path='/Registro' element={<Registro/>}/>
       </Routes> 
       <Footer /> {/* El Footer se renderiza en todas las vistas */}
     </Router>
