@@ -1,0 +1,40 @@
+#root {
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina padding */
+  overflow-x: hidden; /* Evita el scroll horizontal no deseado */
+}
+
+.carousel {
+  width: 100vw;
+  margin: 0 auto; 
+  padding: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.carousel h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #333; 
+  text-align: center;
+  margin: 0;
+}
+
+.carousel button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 15px;
+  border-radius: 50%; 
+  transition: background-color 0.3s ease;
+  width: 50px; /* Tamaño uniforme */
+  height: 50px; /* Tamaño uniforme */
+}
+
+.carousel button:hover {
+  background-color: #0056b3;
+}
