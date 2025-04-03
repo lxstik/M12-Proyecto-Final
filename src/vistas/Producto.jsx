@@ -1,18 +1,18 @@
-import Header from '../componentes/Header';
-import Footer from '../componentes/Footer';
+import { Link } from "react-router-dom";
 
 export default function Producto() {
     return (
         <>
-            <Header />
             <main>
                 <div className="container mt-5 d-flex justify-content-center">
                     <div className="card shadow-lg" style={{ width: '800px', borderRadius: '15px', overflow: 'hidden' }}>
-                        <img src="https://via.placeholder.com/800x400" className="card-img-top" alt="Producto" />
+                        <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto" />
                         <div className="card-body text-center">
                             <h3 className="card-title font-weight-bold">Nombre del Producto</h3>
                             <p className="card-text text-muted">Descripción detallada del producto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                            <Link to="/PerfilVendedor" className="text-decoration-none">
                             <p className="card-text font-weight-bold">Vendedor: <span className="text-primary">Juan Pérez</span></p>
+                            </Link>
                             <p className="card-text">Valoración: ⭐⭐⭐⭐☆ (4/5)</p>
 
                             {/* Estado del producto, precio y peso */}
@@ -29,57 +29,42 @@ export default function Producto() {
                             </div>
 
                             <div className="d-flex justify-content-between mt-3">
-                                <button className="btn btn-primary flex-fill mx-2 py-3">Comprar</button>
-                                <button className="btn btn-success flex-fill mx-2 py-3">Chatear</button>
+                                <Link to="/Home">
+                                    <button className="btn btn-primary flex-fill mx-2 py-3">Comprar</button>
+                                </Link>
+                                <Link to="/Chat">
+                                    <button className="btn btn-success flex-fill mx-2 py-3">Chatear</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Sección de productos similares */}
-                <div className="container mt-5">
-                    <h3 className="mb-4 text-center">Productos Similares</h3>
-                    <div className="row">
-                        <div className="col-md-3">
-                            <div className="card">
-                                <img src="https://via.placeholder.com/200" className="card-img-top" alt="Similar 1" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto 1</h5>
-                                    <p className="card-text">$99.99</p>
-                                </div>
+                <section className="destacados container my-4">
+                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Similares</h1>
+                    <div className="row g-4">
+                        {[1, 2, 3, 4].map((item) => (
+                            <div key={item} className="col-12 col-sm-6 col-md-3">
+                                <Link to="/Producto" className="text-decoration-none">
+                                    <div className="card shadow-sm border-0">
+                                        <img
+                                            src="../public/gameboy.jpg"
+                                            className="card-img-top rounded-top"
+                                            alt={`Producto Destacado ${item}`}
+                                        />
+                                        <div className="card-body text-center">
+                                            <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                            <h3 className="text-primary fw-bold">99.99€</h3>
+                                            <p className="card-text text-muted">Descripción del producto</p>
+                                        </div>
+                                    </div>
+                                </Link>
                             </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="card">
-                                <img src="https://via.placeholder.com/200" className="card-img-top" alt="Similar 2" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto 2</h5>
-                                    <p className="card-text">$89.99</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="card">
-                                <img src="https://via.placeholder.com/200" className="card-img-top" alt="Similar 3" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto 3</h5>
-                                    <p className="card-text">$79.99</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-3">
-                            <div className="card">
-                                <img src="https://via.placeholder.com/200" className="card-img-top" alt="Similar 4" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto 4</h5>
-                                    <p className="card-text">$69.99</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-                </div>
+                </section>
             </main>
-            <Footer />
         </>
     );
 }

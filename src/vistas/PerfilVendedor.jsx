@@ -1,74 +1,53 @@
-import Footer from "../componentes/Footer";
-import Header from "../componentes/Header";
+import { Link } from "react-router-dom";
 
 export default function PerfilVendedor() {
     return (
         <>
-            <Header />
             <main className="container">
+                {/* Sección de información del vendedor */}
                 <section className="vendedor row align-items-center justify-content-between mt-5">
-                    <div className="infoVendedor">
-                        <ul>
-                            <li>Nombre Vendedor</li>
-                            <li>Ubicación</li>
-                            <li>Descripcion</li>
-                        </ul>
+                    <div className="infoVendedor col-md-6 d-flex flex-column">
+                        <div className="row mb-2">
+                            <h1 className="col-12">Nombre Vendedor</h1>
+                        </div>
+                        <div className="row mb-2">
+                            <h1 className="col-12">Ubicación</h1>
+                        </div>
+                        <div className="row">
+                            <h1 className="col-12">Descripción</h1>
+                        </div>
                     </div>
-                    <div className="valoracion">
+                    <div className="valoracion col-md-3 text-center">
                         <h3>Valoración:</h3>
                         <p style={{ fontSize: '30px' }}>★★★★☆</p>
                     </div>
-                    <div className="foto">
-                        <img src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '200px' }} />
+                    <div className="foto col-md-3 text-center">
+                        <img src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '150px', borderRadius: '50%' }} />
                     </div>
                 </section>
 
-                <section className="enVenta">
-                    <h1 className="mb-3 text-center">En Venta</h1>
+                {/* Sección de productos en venta */}
+                <section className="enVenta mt-5">
+                    <h1 className="mb-4 text-center">En Venta</h1>
                     <div className="row">
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 1" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
+                        {[1, 2, 3, 4].map((item) => (
+                            <div key={item} className="col-12 col-sm-6 col-md-3 mb-4">
+                                <Link to="/Producto" className="text-decoration-none">
+                                    <div className="card h-100">
+                                        <img src="../public/gameboy.jpg" className="card-img-top" alt={`Producto Destacado ${item}`} />
+                                        <div className="card-body text-center">
+                                            <h5 className="card-title">Producto</h5>
+                                            <h3 className="text-primary">99.99€</h3>
+                                            <p className="card-text">Descripción del producto</p>
+                                        </div>
+                                    </div>
+                                </Link>
                             </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 2" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 3" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-sm-6 col-md-3">
-                            <div className="card">
-                                <img src="../public/gameboy.jpg" className="card-img-top" alt="Producto Destacado 4" />
-                                <div className="card-body text-center">
-                                    <h5 className="card-title">Producto</h5>
-                                    <h3 className="text-primary">99.99€</h3>
-                                    <p className="card-text">Descripción del producto</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </section>
 
+                {/* Sección de valoraciones y comentarios */}
                 <section className="enVenta">
                     <h1 className="text-center">Valoraciones y Comentarios</h1>
                     <div className="row comentario">
@@ -78,7 +57,7 @@ export default function PerfilVendedor() {
                         </div>
                         <div className="valoracionComentario row col-md-8 align-items-center justify-content-center">
                             <p className="col-md-2" style={{ fontSize: '30px' }}>★★★★☆</p>
-                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px' }} />
+                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px', borderRadius: '50%' }} />
                             <p className="col-md-8">Nombre Usuario</p>
                         </div>
                     </div>
@@ -90,7 +69,7 @@ export default function PerfilVendedor() {
                         </div>
                         <div className="valoracionComentario row col-md-8 align-items-center justify-content-center">
                             <p className="col-md-2" style={{ fontSize: '30px' }}>★★★★☆</p>
-                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px' }} />
+                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px', borderRadius: '50%' }} />
                             <p className="col-md-8">Nombre Usuario</p>
                         </div>
                     </div>
@@ -102,15 +81,15 @@ export default function PerfilVendedor() {
                         </div>
                         <div className="valoracionComentario row col-md-8 align-items-center justify-content-center">
                             <p className="col-md-2" style={{ fontSize: '30px' }}>★★★★☆</p>
-                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px' }} />
+                            <img className="col-md-2" src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '30px', borderRadius: '50%' }} />
                             <p className="col-md-8">Nombre Usuario</p>
                         </div>
                     </div>
-
-                    <button className="btn btn-primary">Dejar comentario</button>
+                    <Link to="/Comentario">
+                        <button className="btn btn-primary">Dejar comentario</button>
+                    </Link>
                 </section>
             </main>
-            <Footer />
         </>
     );
 }

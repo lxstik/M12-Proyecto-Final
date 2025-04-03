@@ -1,10 +1,6 @@
-import Footer from "../componentes/Footer";
-import Header from "../componentes/Header";
-
 export default function TerminosCondiciones() {
     return (
         <>
-            <Header />
             <main>
                 <div className="container mt-5">
                     <h1 className="text-center font-weight-bold">Términos y Condiciones</h1>
@@ -51,7 +47,6 @@ export default function TerminosCondiciones() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

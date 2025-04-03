@@ -1,10 +1,6 @@
-import Footer from "../componentes/Footer";
-import Header from "../componentes/Header";
-
 export default function PoliticaPrivacidad() {
     return (
         <>
-            <Header />
             <main>
                 <div className="container mt-5">
                     <h1 className="text-center font-weight-bold">Política de Privacidad</h1>
@@ -61,7 +57,6 @@ export default function PoliticaPrivacidad() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

@@ -1,10 +1,7 @@
-import Header from '../componentes/Header';
-import Footer from '../componentes/Footer';
-
 export default function SobreNosotros() {
     return (
         <>
-            <Header />
+
             <main>
                 <div className="container mt-5">
                     <h1 className="text-center font-weight-bold">Sobre Nosotros</h1>
@@ -31,7 +28,6 @@ export default function SobreNosotros() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

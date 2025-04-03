@@ -1,10 +1,6 @@
-import Footer from "../componentes/Footer";
-import Header from "../componentes/Header";
-
 export default function TrabajaConNosotros() {
     return (
         <>
-            <Header />
             <main className="d-flex justify-content-center align-items-center" style={{ height: '80vh' }}>
                 <div className="container">
                     <div className="row justify-content-center">
@@ -43,7 +39,6 @@ export default function TrabajaConNosotros() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

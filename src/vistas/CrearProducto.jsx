@@ -1,10 +1,7 @@
-import Header from "../componentes/Header";
-import Footer from "../componentes/Footer";
-
 export default function CrearProducto() {
     return (
         <>
-            <Header />
+
             <main className="container my-5">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
@@ -78,7 +75,6 @@ export default function CrearProducto() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }
