@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 export default function Footer() {
     return (
         <>
@@ -6,16 +7,15 @@ export default function Footer() {
                     <div className="row align-items-start justify-content-between">
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
                             <h5>Contacto</h5>
-                            <a href="#" className="d-block mt-2">Crea un ticket</a>
+                            <Link to="/CrearTicket" className="d-block">Crea un ticket</Link>
                             <a href="mailto:empresaventa@gmail.com" className="d-block">empresaventa@gmail.com</a>
                         </div>
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
                             <h5>Enlaces</h5>
-                            <a href="#" className="d-block">Sobre nosotros</a>
-                            <a href="#" className="d-block">Trabaja con nosotros</a>
-                            <a href="#" className="d-block">Aplicación móvil</a>
-                            <a href="#" className="d-block">Política de privacidad</a>
-                            <a href="#" className="d-block">Términos y condiciones</a>
+                            <Link to="/SobreNosotros" className="d-block">Sobre nosotros</Link>
+                            <Link to="/TrabajaConNosotros" className="d-block">Trabaja con nosotros</Link>
+                            <Link to="/PoliticaPrivacidad" className="d-block">Política de privacidad</Link>
+                            <Link to="/TerminosCondiciones" className="d-block">Términos y condiciones</Link>
                         </div>
                         <div className="col-md-4 text-center text-md-left">
                             <h5>Síguenos</h5>

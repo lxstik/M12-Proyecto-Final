@@ -1,15 +1,16 @@
-import Header from "../componentes/Header";
-import Footer from "../componentes/Footer";
+import { Link } from "react-router-dom";
 
 export default function Comentario() {
     return (
         <>
-            <Header />
+
             <main className="container">
                 <section className="vendedor row align-items-center justify-content-center text-center mt-5">
                     <img src="../public/icons/cuenta.png" alt="Foto de perfil" style={{ width: '200px' }} />
                     <div className="infoVendedor">
-                        <h3>Nombre Vendedor</h3>
+                        <Link to="/PerfilVendedor" className="text-decoration-none">
+                            <h3>Nombre Vendedor</h3>
+                        </Link>
                         <p style={{ fontSize: '30px' }}>★★★★☆</p>
                     </div>
                 </section>
@@ -37,11 +38,13 @@ export default function Comentario() {
                         <h3>Valoración</h3>
                         <p style={{ fontSize: '30px' }}>★★★★☆</p>
                 
-                        <button className="btn btn-primary">Enviar</button>
+                        <Link to="/Home">
+                            <button className="btn btn-primary">Enviar</button>
+                        </Link>
                     </div>
                 </section>
             </main>
-            <Footer />
+
         </>
     );
 }

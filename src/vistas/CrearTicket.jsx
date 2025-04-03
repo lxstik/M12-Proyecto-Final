@@ -1,10 +1,8 @@
-import Header from "../componentes/Header";
-import Footer from "../componentes/Footer";
+import { Link } from "react-router-dom";
 
 export default function CrearTicket() {
     return (
         <>
-            <Header />
             <main className="d-flex justify-content-center align-items-center" style={{ height: '80vh' }}>
                 <div className="container">
                     <div className="row justify-content-center">
@@ -21,7 +19,9 @@ export default function CrearTicket() {
                                         <textarea className="form-control" id="descripcion" rows="4" placeholder="Ingrese la descripción" required></textarea>
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-primary">Enviar</button>
+                                        <Link to="/Home">
+                                            <button type="submit" className="btn btn-primary">Enviar</button>
+                                        </Link>
                                     </div>
                                 </form>
                             </div>
@@ -29,7 +29,6 @@ export default function CrearTicket() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }
