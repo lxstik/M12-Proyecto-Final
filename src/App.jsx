@@ -1,4 +1,6 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Asegúrate de que Bootstrap JS está disponible
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './vistas/Home';
 import Header from './componentes/Header';
@@ -22,7 +24,7 @@ import Login from './vistas/Login';
 function App() {
   return (
     <Router>
-      <Header /> {/* El Header se renderiza en todas las vistas */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
@@ -41,7 +43,7 @@ function App() {
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Registro' element={<Registro/>}/>
       </Routes> 
-      <Footer /> {/* El Footer se renderiza en todas las vistas */}
+      <Footer />
     </Router>
   );
 }
