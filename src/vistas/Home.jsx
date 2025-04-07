@@ -134,8 +134,8 @@ export default function Home() {
                     </div>
                 </div>
 
-                <section className="destacados container my-4">
-                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Destacados</h1>
+                <section className="destacados container my-4"  >
+                    <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Destacados</h1>
                     <div className="row g-4">
                         {[1, 2, 3, 4].map((item) => (
                             <div key={item} className="col-12 col-sm-6 col-md-3">
@@ -148,7 +148,7 @@ export default function Home() {
                                         />
                                         <div className="card-body text-center">
                                             <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="text-primary fw-bold">99.99€</h3>
+                                            <h3 className="fw-bold">99.99€</h3>
                                             <p className="card-text text-muted">Descripción del producto</p>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@ export default function Home() {
                 </section>
 
                 <section className="destacados container my-4">
-                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Para ti</h1>
+                    <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Para ti</h1>
                     <div className="row g-4">
                         {[1, 2, 3, 4].map((item) => (
                             <div key={item} className="col-12 col-sm-6 col-md-3">
@@ -172,7 +172,7 @@ export default function Home() {
                                         />
                                         <div className="card-body text-center">
                                             <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="text-primary fw-bold">99.99€</h3>
+                                            <h3 className="fw-bold">99.99€</h3>
                                             <p className="card-text text-muted">Descripción del producto</p>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@ export default function Home() {
                 </section>
 
                 <section className="destacados container my-4">
-                    <h1 className="mb-3 text-center text-uppercase fw-bold text-primary">Ofertas</h1>
+                    <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Ofertas</h1>
                     <div className="row g-4">
                         {[1, 2, 3, 4].map((item) => (
                             <div key={item} className="col-12 col-sm-6 col-md-3">
@@ -196,7 +196,7 @@ export default function Home() {
                                         />
                                         <div className="card-body text-center">
                                             <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="text-primary fw-bold">79.99€</h3>
+                                            <h3 className="fw-bold">79.99€</h3>
                                             <p className="card-text text-muted">Descripción del producto</p>
                                         </div>
                                     </div>

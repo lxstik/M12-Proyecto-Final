@@ -72,3 +72,11 @@ footer {
 .carousel-arrow.right {
   right: -20px;
 }
+
+.destacados{
+  padding-bottom: 100px !important;
+}
+
+.sectionText{
+  padding-bottom: 50px !important;
+}
