@@ -19,14 +19,14 @@ export default function Chat() {
                         }}
                     >
 
-                        <Link to="/PerfilVendedor" className="text-decoration-none text-dark">
+                        <Link to="/PerfilVendedor" className="vendedor-link" style={{ display: 'flex', alignItems: 'center' }}>
                             <div className="vendedor row align-items-center">
                                 <img
                                     src="../public/icons/cuenta.png"
                                     alt="Foto de perfil"
-                                    style={{ width: '50px', borderRadius: '50%', marginRight: '10px' }}
+                                    style={{ width: '50px', borderRadius: '50%', marginRight: '15px' }}
                                 />
-                                <h3>Nombre Vendedor</h3>
+                                <h3 className="mb-0">Nombre Vendedor</h3>
                             </div>
                         </Link>
                         <h3>★★★★☆</h3>
@@ -34,8 +34,8 @@ export default function Chat() {
 
                     {/* Caja de mensajes */}
                     <div className="message-box" style={{ overflowY: 'auto', flexGrow: 1, paddingBottom: '60px', marginBottom: '20px' }}>
-                        {/* Mensaje enviado */}
-                        <div className="message-sent" style={{ marginBottom: '10px', display: 'flex' }}>
+                        {/* Mensaje enviado (alineado a la derecha) */}
+                        <div className="message-sent" style={{ marginBottom: '10px', display: 'flex', justifyContent: 'flex-end' }}>
                             <p
                                 className="message-text"
                                 style={{
@@ -48,11 +48,12 @@ export default function Chat() {
                                     marginLeft: '10px',
                                 }}
                             >
-                                ¡Hola! ¿En qué puedo ayudarte con el producto?
+                                ¡Hola! Estoy interesado en este artículo, ¿me podrías dar más detalles?
+                               
                             </p>
                         </div>
 
-                        {/* Mensaje recibido */}
+                        {/* Mensaje recibido (alineado a la izquierda) */}
                         <div className="message-received" style={{ marginBottom: '10px', display: 'flex' }}>
                             <p
                                 className="message-text"
@@ -66,7 +67,7 @@ export default function Chat() {
                                     marginRight: '10px',
                                 }}
                             >
-                                ¡Hola! Estoy interesado en este artículo, ¿me podrías dar más detalles?
+                                 ¡Hola! ¿En qué puedo ayudarte con el producto?
                             </p>
                         </div>
                     </div>

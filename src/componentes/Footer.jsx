@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 export default function Footer() {
     return (
         <>
-            <footer className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a' }}>
+            <footer className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginTop: '170px' }}>
                 <div className="container">
                     <div className="row align-items-start justify-content-between">
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
