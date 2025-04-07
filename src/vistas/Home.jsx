@@ -1,7 +1,44 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
+import Box from '@mui/material/Box';
+import Grow from '@mui/material/Grow';
 
 export default function Home() {
+    // Estados y referencias para cada sección
+    const [checkedDestacados, setCheckedDestacados] = useState(false);
+    const [checkedParaTi, setCheckedParaTi] = useState(false);
+    const [checkedOfertas, setCheckedOfertas] = useState(false);
+
+    const refDestacados = useRef(null);
+    const refParaTi = useRef(null);
+    const refOfertas = useRef(null);
+
+    // Función para configurar el observer
+    const setupObserver = (ref, setChecked) => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setChecked(true); // Activa la animación cuando la sección es visible
+                }
+            },
+            { threshold: 0.1 } // El 10% del elemento debe estar visible para activar
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    };
+
+    // Configurar observers para cada sección
+    useEffect(() => setupObserver(refDestacados, setCheckedDestacados), []);
+    useEffect(() => setupObserver(refParaTi, setCheckedParaTi), []);
+    useEffect(() => setupObserver(refOfertas, setCheckedOfertas), []);
 
     return (
         <>
@@ -134,74 +171,97 @@ export default function Home() {
                     </div>
                 </div>
 
-                <section className="destacados container my-4"  >
-                    <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Destacados</h1>
-                    <div className="row g-4">
-                        {[1, 2, 3, 4].map((item) => (
-                            <div key={item} className="col-12 col-sm-6 col-md-3">
-                                <Link to="/Producto" className="text-decoration-none">
-                                    <div className="card shadow-sm border-0">
-                                        <img
-                                            src="../public/gameboy.jpg"
-                                            className="card-img-top rounded-top"
-                                            alt={`Producto Destacado ${item}`}
-                                        />
-                                        <div className="card-body text-center">
-                                            <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="fw-bold">99.99€</h3>
-                                            <p className="card-text text-muted">Descripción del producto</p>
-                                        </div>
+                {/* Sección Destacados */}
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <section ref={refDestacados} className="destacados container my-4">
+                        <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Destacados</h1>
+                        <div className="row g-4">
+                            {[1, 2, 3, 4].map((item, index) => (
+                                <Grow
+                                    key={item}
+                                    in={checkedDestacados}
+                                    timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                                >
+                                    <div className="col-12 col-sm-6 col-md-3">
+                                        <Link to="/Producto" className="text-decoration-none">
+                                            <div className="card shadow-sm border-0">
+                                                <img
+                                                    src="../public/gameboy.jpg"
+                                                    className="card-img-top rounded-top"
+                                                    alt={`Producto Destacado ${item}`}
+                                                />
+                                                <div className="card-body text-center">
+                                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                                    <h3 className="fw-bold">99.99€</h3>
+                                                    <p className="card-text text-muted">Descripción del producto</p>
+                                                </div>
+                                            </div>
+                                        </Link>
                                     </div>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                                </Grow>
+                            ))}
+                        </div>
+                    </section>
+                </Box>
 
-                <section className="destacados container my-4">
+                {/* Sección Para Ti */}
+                <section ref={refParaTi} className="destacados container my-4">
                     <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Para ti</h1>
                     <div className="row g-4">
-                        {[1, 2, 3, 4].map((item) => (
-                            <div key={item} className="col-12 col-sm-6 col-md-3">
-                                <Link to="/Producto" className="text-decoration-none">
-                                    <div className="card shadow-sm border-0">
-                                        <img
-                                            src="../public/gameboy.jpg"
-                                            className="card-img-top rounded-top"
-                                            alt={`Producto Destacado ${item}`}
-                                        />
-                                        <div className="card-body text-center">
-                                            <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="fw-bold">99.99€</h3>
-                                            <p className="card-text text-muted">Descripción del producto</p>
+                        {[1, 2, 3, 4].map((item, index) => (
+                            <Grow
+                                key={item}
+                                in={checkedParaTi}
+                                timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                            >
+                                <div className="col-12 col-sm-6 col-md-3">
+                                    <Link to="/Producto" className="text-decoration-none">
+                                        <div className="card shadow-sm border-0">
+                                            <img
+                                                src="../public/gameboy.jpg"
+                                                className="card-img-top rounded-top"
+                                                alt={`Producto Destacado ${item}`}
+                                            />
+                                            <div className="card-body text-center">
+                                                <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                                <h3 className="fw-bold">99.99€</h3>
+                                                <p className="card-text text-muted">Descripción del producto</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            </div>
+                                    </Link>
+                                </div>
+                            </Grow>
                         ))}
                     </div>
                 </section>
 
-                <section className="destacados container my-4">
+                {/* Sección Ofertas */}
+                <section ref={refOfertas} className="destacados container my-4">
                     <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Ofertas</h1>
                     <div className="row g-4">
-                        {[1, 2, 3, 4].map((item) => (
-                            <div key={item} className="col-12 col-sm-6 col-md-3">
-                                <Link to="/Producto" className="text-decoration-none">
-                                    <div className="card shadow-sm border-0">
-                                        <img
-                                            src="../public/gameboy.jpg"
-                                            className="card-img-top rounded-top"
-                                            alt={`Producto Destacado ${item}`}
-                                        />
-                                        <div className="card-body text-center">
-                                            <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                            <h3 className="fw-bold">79.99€</h3>
-                                            <p className="card-text text-muted">Descripción del producto</p>
+                        {[1, 2, 3, 4].map((item, index) => (
+                            <Grow
+                                key={item}
+                                in={checkedOfertas}
+                                timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                            >
+                                <div className="col-12 col-sm-6 col-md-3">
+                                    <Link to="/Producto" className="text-decoration-none">
+                                        <div className="card shadow-sm border-0">
+                                            <img
+                                                src="../public/gameboy.jpg"
+                                                className="card-img-top rounded-top"
+                                                alt={`Producto Destacado ${item}`}
+                                            />
+                                            <div className="card-body text-center">
+                                                <h5 className="card-title fw-bold text-dark">Producto</h5>
+                                                <h3 className="fw-bold">79.99€</h3>
+                                                <p className="card-text text-muted">Descripción del producto</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            </div>
+                                    </Link>
+                                </div>
+                            </Grow>
                         ))}
                     </div>
                 </section>

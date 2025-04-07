@@ -1,5 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from 'react-router-dom';
+
 export default function Footer() {
+    const location = useLocation();
+    const hiddenRoutes = ['/Login', '/Registro', '/Chat'];
+
+    // Si estás en una ruta donde no quieres mostrar el footer, retorna null
+    if (hiddenRoutes.includes(location.pathname)) return null;
     return (
         <>
             <footer className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginTop: '170px' }}>

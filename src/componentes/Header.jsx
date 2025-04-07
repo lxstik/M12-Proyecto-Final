@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+    const location = useLocation();
+    const hiddenRoutes = ['/Login', '/Registro'];
+
+    // Si estás en una ruta donde no quieres mostrar el header, retorna null
+    if (hiddenRoutes.includes(location.pathname)) return null;
+
     return (
         <header className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginBottom: '170px' }}>
             <div className="container">
@@ -40,7 +46,7 @@ export default function Header() {
                         }}></i>
                     </div>
 
-                    {/* Icono de usuario y texto */}
+                    {/* Usuario */}
                     <div className="col-3 text-center d-flex align-items-center justify-content-center">
                         <Link to="/PerfilUsuario" className="text-decoration-none d-flex align-items-center">
                             <img 

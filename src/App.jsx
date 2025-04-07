@@ -21,12 +21,12 @@ import Registro from './vistas/Registro';
 import Login from './vistas/Login';
 
 
+
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/PerfilUsuario" element={<PerfilUsuario />} />
         <Route path="/PerfilVendedor" element={<PerfilVendedor />} />
