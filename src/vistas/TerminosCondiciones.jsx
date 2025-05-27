@@ -1,52 +1,77 @@
 export default function TerminosCondiciones() {
     return (
-        <>
-            <main>
-                <div className="container mt-5">
-                    <h1 className="text-center font-weight-bold">Términos y Condiciones</h1>
-                    <div className="card shadow-lg p-4 mt-4">
-                        <div className="text-center">
-                            <img src="../public/logo.png" alt="Logo" style={{ width: '300px' }} />
-                        </div>
-                        <h2>Uso de la Plataforma</h2>
-                        <p className="text-justify">Al utilizar nuestra plataforma, el usuario se compromete a:</p>
-                        <ul>
-                            <li>Ser mayor de edad y proporcionar información veraz.</li>
-                            <li>No utilizar la plataforma para actividades ilegales o fraudulentas.</li>
-                            <li>Respetar los derechos de otros usuarios y de terceros.</li>
-                            <li>No publicar contenido ofensivo, engañoso o prohibido por la ley.</li>
-                        </ul>
+        <main className="container my-5">
+            <h1 className="text-center fw-bold mb-4">Términos y Condiciones</h1>
 
-                        <h2>Registro y Cuentas de Usuario</h2>
-                        <p className="text-justify">Para acceder a ciertos servicios, es necesario registrarse y crear una cuenta. El usuario es responsable de mantener la confidencialidad de sus credenciales y de cualquier actividad realizada en su cuenta.</p>
-
-                        <h2>Publicación y Venta de Productos</h2>
-                        <p className="text-justify">Los usuarios pueden publicar productos para su venta, asegurando que:</p>
-                        <ul>
-                            <li>Los artículos cumplen con nuestras políticas y no infringen derechos de terceros.</li>
-                            <li>La descripción, imágenes y precio del producto sean exactos y veraces.</li>
-                            <li>Se respete la legislación aplicable en materia de comercio electrónico.</li>
-                        </ul>
-
-                        <h2>Pagos y Transacciones</h2>
-                        <p className="text-justify">Los pagos y transacciones se procesan a través de pasarelas de pago seguras. No nos hacemos responsables de fraudes, errores bancarios o problemas derivados de proveedores externos.</p>
-
-                        <h2>Responsabilidades del Usuario</h2>
-                        <p className="text-justify">El usuario acepta que el uso de la plataforma es bajo su propio riesgo. No nos responsabilizamos por:</p>
-                        <ul>
-                            <li>Productos defectuosos, falsificados o con información errónea.</li>
-                            <li>Disputas entre compradores y vendedores.</li>
-                            <li>Pérdida de datos, interrupciones en el servicio o accesos no autorizados.</li>
-                        </ul>
-
-                        <h2>Propiedad Intelectual</h2>
-                        <p className="text-justify">Todos los contenidos de la plataforma, incluyendo logotipos, imágenes y textos, son propiedad de la empresa o de sus respectivos titulares, estando protegidos por leyes de propiedad intelectual.</p>
-
-                        <h2>Modificaciones a los Términos</h2>
-                        <p className="text-justify">Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor tras su publicación en la plataforma.</p>
-                    </div>
+            <div className="card shadow p-4 bg-light rounded-4">
+                <div className="text-center mb-4">
+                    <img
+                        src="../public/logo.png"
+                        alt="Logo de la empresa"
+                        className="img-fluid"
+                        style={{ width: '250px' }}
+                    />
                 </div>
-            </main>
-        </>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Uso de la Plataforma</h3>
+                    <p>Al acceder y utilizar esta plataforma, el usuario acepta cumplir con los siguientes compromisos:</p>
+                    <ul>
+                        <li>Ser mayor de edad y proporcionar información verídica y actualizada.</li>
+                        <li>No utilizar la plataforma con fines ilícitos, fraudulentos o malintencionados.</li>
+                        <li>Respetar los derechos, privacidad e integridad de otros usuarios.</li>
+                        <li>Evitar la publicación de contenido ofensivo, ilegal o que infrinja derechos de terceros.</li>
+                    </ul>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Registro y Cuentas de Usuario</h3>
+                    <p>
+                        Algunas funcionalidades requieren que el usuario se registre. Este será responsable de mantener sus credenciales seguras y de toda actividad realizada desde su cuenta.
+                    </p>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Publicación y Venta de Productos</h3>
+                    <p>Los usuarios pueden publicar productos, asegurando que:</p>
+                    <ul>
+                        <li>Los artículos cumplan con nuestras políticas internas y normativas legales.</li>
+                        <li>La información ofrecida (descripción, imágenes, precio) sea clara, precisa y verídica.</li>
+                        <li>El producto no infrinja derechos de autor, marcas registradas u otras disposiciones legales.</li>
+                    </ul>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Pagos y Transacciones</h3>
+                    <p>
+                        Las transacciones son gestionadas mediante plataformas de pago seguras. La empresa no se responsabiliza por incidencias derivadas de fallos bancarios, fraudes externos o errores de procesamiento.
+                    </p>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Responsabilidades del Usuario</h3>
+                    <p>El uso de la plataforma es responsabilidad exclusiva del usuario. La empresa no responderá por:</p>
+                    <ul>
+                        <li>Productos falsificados, defectuosos o mal descritos.</li>
+                        <li>Conflictos o disputas entre compradores y vendedores.</li>
+                        <li>Interrupciones, pérdidas de datos o accesos no autorizados a la cuenta.</li>
+                    </ul>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Propiedad Intelectual</h3>
+                    <p>
+                        Todo el contenido de esta plataforma —incluyendo logotipos, textos, imágenes y diseños— es propiedad exclusiva de la empresa o sus licenciatarios, y está protegido por la legislación vigente en materia de propiedad intelectual.
+                    </p>
+                </section>
+
+                <section className="mb-4">
+                    <h3 className="fw-semibold">Modificaciones a los Términos</h3>
+                    <p>
+                        Nos reservamos el derecho de actualizar estos términos y condiciones en cualquier momento. Los cambios serán efectivos desde su publicación en el sitio web.
+                    </p>
+                </section>
+            </div>
+        </main>
     );
 }

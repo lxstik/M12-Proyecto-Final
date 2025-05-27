@@ -1,6 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 export default function Producto() {
+    const [valorProducto, setvalorProducto] = React.useState(3);
     return (
         <>
             <main>
@@ -13,7 +18,8 @@ export default function Producto() {
                             <Link to="/PerfilVendedor" className="text-decoration-none">
                             <p className="card-text font-weight-bold">Vendedor: <span className="text-primary">Juan Pérez</span></p>
                             </Link>
-                            <p className="card-text">Valoración: ⭐⭐⭐⭐☆ (4/5)</p>
+
+                            <Rating name="read-only" value={valorProducto} readOnly />
 
                             {/* Estado del producto, precio y peso */}
                             <div className="mt-3">

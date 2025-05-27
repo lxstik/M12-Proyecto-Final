@@ -1,39 +1,81 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from 'react-router-dom';
+
 export default function Footer() {
+    const location = useLocation();
+    const hiddenRoutes = ['/Login', '/Registro', '/Chat'];
+
+    // Si estás en una ruta donde no quieres mostrar el footer, retorna null
+    if (hiddenRoutes.includes(location.pathname)) return null;
     return (
         <>
-            <footer className="bg-light py-4">
+            <footer className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginTop: '170px' }}>
                 <div className="container">
                     <div className="row align-items-start justify-content-between">
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                            <h5>Contacto</h5>
-                            <Link to="/CrearTicket" className="d-block">Crea un ticket</Link>
-                            <a href="mailto:empresaventa@gmail.com" className="d-block">empresaventa@gmail.com</a>
+                            <h1 className="mb-3">Contacto</h1>
+                            <Link
+                                to="/CrearTicket"
+                                className="text-decoration-none"
+                            >
+                                Crea un ticket
+                            </Link>
+                            <a
+                                href="mailto:empresaventa@gmail.com"
+                                className="text-decoration-none"
+                            >
+                                empresaventa@gmail.com
+                            </a>
                         </div>
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
-                            <h5>Enlaces</h5>
-                            <Link to="/SobreNosotros" className="d-block">Sobre nosotros</Link>
-                            <Link to="/TrabajaConNosotros" className="d-block">Trabaja con nosotros</Link>
-                            <Link to="/PoliticaPrivacidad" className="d-block">Política de privacidad</Link>
-                            <Link to="/TerminosCondiciones" className="d-block">Términos y condiciones</Link>
+                            <h1 className="mb-3">Enlaces</h1>
+                            <Link
+                                to="/SobreNosotros"
+                                className="text-decoration-none"
+                            >
+                                Sobre nosotros
+                            </Link>
+                            <Link
+                                to="/TrabajaConNosotros"
+                                className="text-decoration-none"
+                            >
+                                Trabaja con nosotros
+                            </Link>
+                            <Link
+                                to="/PoliticaPrivacidad"
+                                className="text-decoration-none"
+                            >
+                                Política de privacidad
+                            </Link>
+                            <Link
+                                to="/TerminosCondiciones"
+                                className="text-decoration-none"
+                            >
+                                Términos y condiciones
+                            </Link>
                         </div>
-                        <div className="col-md-4 text-center text-md-left">
-                            <h5>Síguenos</h5>
-                            <div className="d-flex justify-content-center justify-content-md-start">
-                                <a href="#"><img src="./public/icons/instagram.png" alt="instagram" className="mx-2" style={{ width: '40px' }} /></a>
-                                <a href="#"><img src="./public/icons/facebook.png" alt="facebook" className="mx-2" style={{ width: '40px' }} /></a>
-                                <a href="#"><img src="./public/icons/youtube.png" alt="youtube" className="mx-2" style={{ width: '40px' }} /></a>
-                                <a href="#"><img src="./public/icons/twitter.png" alt="twitter" className="mx-2" style={{ width: '40px' }} /></a>
+                        <div className="col-md-4 text-center">
+                            <h1 className="mb-3">Síguenos</h1>
+                            <div className="d-flex justify-content-center">
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <img src="/icons/instagram.png" alt="Instagram" className="mx-2" style={{ width: '40px' }} />
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                    <img src="/icons/facebook.png" alt="Facebook" className="mx-2" style={{ width: '40px' }} />
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                    <img src="/icons/youtube.png" alt="YouTube" className="mx-2" style={{ width: '40px' }} />
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                    <img src="/icons/twitter.png" alt="Twitter" className="mx-2" style={{ width: '40px' }} />
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div className="row mt-4">
-                        <div className="col text-center">
-                            <p className="mb-0">&copy; 2025 Empresa de Venta. Todos los derechos reservados.</p>
-                        </div>
+
                     </div>
                 </div>
             </footer>
+
+
         </>
     )
 }

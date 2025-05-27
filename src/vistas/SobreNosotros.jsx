@@ -1,33 +1,37 @@
 export default function SobreNosotros() {
     return (
-        <>
+        <main className="container my-5">
+            <h1 className="text-center fw-bold mb-4">Sobre Nosotros</h1>
 
-            <main>
-                <div className="container mt-5">
-                    <h1 className="text-center font-weight-bold">Sobre Nosotros</h1>
-                    <div className="card shadow-lg p-4 mt-4">
-                        <div className="text-center">
-                            <img src="../public/logo.png" alt="Logo" style={{ width: '300px' }} />
-                        </div>
-                        
-                        <p className="text-justify">
-                            Somos <strong>(AUN NO TENGO NOMBRE DE LA EMPRESA)</strong>, una empresa apasionada por la cultura geek y la tecnología. Nos especializamos en la compra y venta de productos frikis, gadgets innovadores, tecnología de última generación y merchandising exclusivo.
-                        </p>
-                        <p className="text-justify">
-                            Ubicados en el corazón de <strong>Barcelona</strong>, nos enorgullecemos de ofrecer a nuestra comunidad productos únicos y difíciles de encontrar en tiendas convencionales. Desde figuras coleccionables y videojuegos hasta hardware especializado, tenemos algo para cada fanático.
-                        </p>
-                        <p className="text-justify">
-                            ¿Sabías que colaboramos con artistas locales para traer productos exclusivos a nuestros clientes? Además, organizamos eventos y sorteos para nuestra comunidad, asegurándonos de que cada visita a nuestra tienda sea una experiencia especial.
-                        </p>
-                        <div className="text-center mt-4">
-                            <h5>Visítanos en:</h5>
-                            <p><strong>Dirección:</strong> Calle Geek, 42, Barcelona, España</p>
-                            <p><strong>Email:</strong> falyehor@fpllefia.com</p>
-                            <p><strong>Teléfono:</strong> +34 123 456 789</p>
-                        </div>
-                    </div>
+            <div className="card shadow-lg p-4 rounded-4 bg-light">
+                <div className="text-center mb-4">
+                    <img
+                        src="../public/logo.png"
+                        alt="Logo de la empresa"
+                        style={{ width: '250px' }}
+                        className="img-fluid"
+                    />
                 </div>
-            </main>
-        </>
+
+                <p className="lead text-justify">
+                    Somos <strong>(Nombre de la empresa pendiente)</strong>, una iniciativa nacida de la pasión por la cultura geek, la tecnología y el coleccionismo. Nos dedicamos a conectar a fans con productos únicos y de calidad: desde gadgets innovadores hasta merchandising exclusivo y rarezas geek.
+                </p>
+
+                <p className="text-justify">
+                    Con sede en el vibrante corazón de <strong>Barcelona</strong>, nos destacamos por ofrecer artículos que rara vez se encuentran en tiendas convencionales. ¿Buscas figuras de colección, videojuegos retro, hardware personalizado o ediciones limitadas? Aquí los encontrarás.
+                </p>
+
+                <p className="text-justify">
+                    Además, colaboramos con artistas y creadores locales para lanzar productos exclusivos y organizamos eventos temáticos, torneos y sorteos que hacen de nuestra comunidad algo único. Queremos que cada visita sea más que una compra: una experiencia.
+                </p>
+
+                <div className="text-center mt-5">
+                    <h5 className="fw-bold">¿Dónde encontrarnos?</h5>
+                    <p><strong>Dirección:</strong> Calle Geek, 42 · Barcelona, España</p>
+                    <p><strong>Email:</strong> falyehor@fpllefia.com</p>
+                    <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                </div>
+            </div>
+        </main>
     );
 }

@@ -1,40 +1,94 @@
 #root {
-  width: 100vw; /* Ocupa todo el ancho de la ventana */
-  margin: 0; /* Elimina márgenes */
-  padding: 0; /* Elimina padding */
-  overflow-x: hidden; /* Evita el scroll horizontal no deseado */
-}
-
-.carousel {
   width: 100vw;
-  margin: 0 auto; 
-  padding: 0; 
-  display: flex;
-  align-items: center;
-  justify-content: space-between; 
-}
-.carousel h1 {
-  font-size: 50px;
-  font-weight: bold;
-  color: #333; 
-  text-align: center;
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-.carousel button {
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 100%;
+}
+
+footer {
+  height: 400px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 15px;
-  border-radius: 50%; 
-  transition: background-color 0.3s ease;
-  width: 50px; /* Tamaño uniforme */
-  height: 50px; /* Tamaño uniforme */
+  text-align: center;
+  font-size: 25px;
 }
 
-.carousel button:hover {
-  background-color: #0056b3;
+.text-decoration-none {
+  color: #1a1a1a !important;
+  text-decoration: none !important;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+
+.text-decoration-none:hover {
+  color: #007bff !important;
+  transform: scale(1.05);
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+
+.carousel-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 40px;
+  height: 60px;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-arrow.left {
+  left: -20px;
+}
+
+.carousel-arrow.right {
+  right: -20px;
+}
+
+.destacados{
+  padding-bottom: 100px !important;
+}
+
+.sectionText{
+  padding-bottom: 50px !important;
+}
+
+.vendedor-link {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.vendedor-link:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
