@@ -131,7 +131,7 @@ export default function Home() {
                             </div>
                             <div className="carousel-item" style={{ height: '100%' }}>
                                 <img
-                                    src="../../public/banner2.JPEG"
+                                    src="../../public/banner2.jpeg"
                                     className="d-block w-100"
                                     alt="Componente 2"
                                     style={{ height: '100%', objectFit: 'cover' }}
