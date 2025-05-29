@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Grow from '@mui/material/Grow';
+import supabase from '../supabaseClient';
 
 export default function Home() {
     // Estados y referencias para cada sección
     const [checkedDestacados, setCheckedDestacados] = useState(false);
     const [checkedParaTi, setCheckedParaTi] = useState(false);
     const [checkedOfertas, setCheckedOfertas] = useState(false);
+
+    const [productos, setProductos] = useState([]);
 
     const refDestacados = useRef(null);
     const refParaTi = useRef(null);
@@ -21,7 +24,7 @@ export default function Home() {
                     setChecked(true); // Activa la animación cuando la sección es visible
                 }
             },
-            { threshold: 0.1 } // El 10% del elemento debe estar visible para activar
+            { threshold: 0.1 }
         );
 
         if (ref.current) {
@@ -39,6 +42,27 @@ export default function Home() {
     useEffect(() => setupObserver(refDestacados, setCheckedDestacados), []);
     useEffect(() => setupObserver(refParaTi, setCheckedParaTi), []);
     useEffect(() => setupObserver(refOfertas, setCheckedOfertas), []);
+
+    // Traer productos de Supabase
+    useEffect(() => {
+        const fetchProductos = async () => {
+            const { data, error } = await supabase
+                .from('productos')
+                .select('*')
+                .limit(20);
+
+            // Debug: muestra los productos y errores en consola
+            console.log('PRODUCTOS:', data, 'ERROR:', error);
+
+            if (!error) setProductos(data);
+        };
+        fetchProductos();
+    }, []);
+
+    // Filtrar productos destacados, normales y ofertas
+    const destacados = productos.filter(p => p.estado === 'Destacado').slice(0, 4);
+    const normales = productos.filter(p => p.estado === 'Normal').slice(0, 4);
+    const ofertas = productos.filter(p => Number(p.precio) < 80).slice(0, 4);
 
     return (
         <>
@@ -117,9 +141,8 @@ export default function Home() {
                         id="carouselExample"
                         className="carousel slide"
                         data-bs-ride="carousel"
-                        style={{ height: '800px', margin: '0px 0px 100px 0px' }} // Altura mayor
+                        style={{ height: '800px', margin: '0px 0px 100px 0px' }}
                     >
-                        {/* Carousel inner con imagenes */}
                         <div className="carousel-inner" style={{ height: '100%' }}>
                             <div className="carousel-item active" style={{ height: '100%' }}>
                                 <img
@@ -147,7 +170,6 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Controles de carousel (anterior y siguiente) */}
                         <button
                             className="carousel-control-prev"
                             type="button"
@@ -176,24 +198,24 @@ export default function Home() {
                     <section ref={refDestacados} className="destacados container my-4">
                         <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Destacados</h1>
                         <div className="row g-4">
-                            {[1, 2, 3, 4].map((item, index) => (
+                            {destacados.map((item, index) => (
                                 <Grow
-                                    key={item}
+                                    key={item.id}
                                     in={checkedDestacados}
-                                    timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                                    timeout={1000 + index * 500}
                                 >
                                     <div className="col-12 col-sm-6 col-md-3">
-                                        <Link to="/Producto" className="text-decoration-none">
+                                        <Link to={`/Producto/${item.id}`} className="text-decoration-none">
                                             <div className="card shadow-sm border-0">
                                                 <img
-                                                    src="../public/gameboy.jpg"
+                                                    src={item.imagen || "../public/gameboy.jpg"}
                                                     className="card-img-top rounded-top"
-                                                    alt={`Producto Destacado ${item}`}
+                                                    alt={`Producto Destacado ${item.id}`}
                                                 />
                                                 <div className="card-body text-center">
-                                                    <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                                    <h3 className="fw-bold">99.99€</h3>
-                                                    <p className="card-text text-muted">Descripción del producto</p>
+                                                    <h5 className="card-title fw-bold text-dark">{item.nombre || 'Producto'}</h5>
+                                                    <h3 className="fw-bold">{item.precio}€</h3>
+                                                    <p className="card-text text-muted">{item.descripcion || 'Descripción del producto'}</p>
                                                 </div>
                                             </div>
                                         </Link>
@@ -208,24 +230,24 @@ export default function Home() {
                 <section ref={refParaTi} className="destacados container my-4">
                     <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Para ti</h1>
                     <div className="row g-4">
-                        {[1, 2, 3, 4].map((item, index) => (
+                        {normales.map((item, index) => (
                             <Grow
-                                key={item}
+                                key={item.id}
                                 in={checkedParaTi}
-                                timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                                timeout={1000 + index * 500}
                             >
                                 <div className="col-12 col-sm-6 col-md-3">
-                                    <Link to="/Producto" className="text-decoration-none">
+                                    <Link to={`/Producto/${item.id}`} className="text-decoration-none">
                                         <div className="card shadow-sm border-0">
                                             <img
-                                                src="../public/gameboy.jpg"
+                                                src={item.imagen || "../public/gameboy.jpg"}
                                                 className="card-img-top rounded-top"
-                                                alt={`Producto Destacado ${item}`}
+                                                alt={`Producto ${item.id}`}
                                             />
                                             <div className="card-body text-center">
-                                                <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                                <h3 className="fw-bold">99.99€</h3>
-                                                <p className="card-text text-muted">Descripción del producto</p>
+                                                <h5 className="card-title fw-bold text-dark">{item.nombre || 'Producto'}</h5>
+                                                <h3 className="fw-bold">{item.precio}€</h3>
+                                                <p className="card-text text-muted">{item.descripcion || 'Descripción del producto'}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -239,24 +261,24 @@ export default function Home() {
                 <section ref={refOfertas} className="destacados container my-4">
                     <h1 className="mb-3 text-center text-uppercase fw-bold sectionText">Ofertas</h1>
                     <div className="row g-4">
-                        {[1, 2, 3, 4].map((item, index) => (
+                        {ofertas.map((item, index) => (
                             <Grow
-                                key={item}
+                                key={item.id}
                                 in={checkedOfertas}
-                                timeout={1000 + index * 500} // Incrementa el retraso para cada elemento
+                                timeout={1000 + index * 500}
                             >
                                 <div className="col-12 col-sm-6 col-md-3">
-                                    <Link to="/Producto" className="text-decoration-none">
+                                    <Link to={`/Producto/${item.id}`} className="text-decoration-none">
                                         <div className="card shadow-sm border-0">
                                             <img
-                                                src="../public/gameboy.jpg"
+                                                src={item.imagen || "../public/gameboy.jpg"}
                                                 className="card-img-top rounded-top"
-                                                alt={`Producto Destacado ${item}`}
+                                                alt={`Oferta ${item.id}`}
                                             />
                                             <div className="card-body text-center">
-                                                <h5 className="card-title fw-bold text-dark">Producto</h5>
-                                                <h3 className="fw-bold">79.99€</h3>
-                                                <p className="card-text text-muted">Descripción del producto</p>
+                                                <h5 className="card-title fw-bold text-dark">{item.nombre || 'Producto'}</h5>
+                                                <h3 className="fw-bold">{item.precio}€</h3>
+                                                <p className="card-text text-muted">{item.descripcion || 'Descripción del producto'}</p>
                                             </div>
                                         </div>
                                     </Link>
