@@ -29,19 +29,37 @@ export default function Registro() {
       return;
     }
 
-    // 2. Crea el usuario en user_auth
-    const { error } = await supabase
+    // 2. Crea el usuario en user_auth y obtén su id
+    const { data: authData, error: authError } = await supabase
       .from('user_auth')
-      .insert([{ login, contraseña }]);
+      .insert([{ login, contraseña }])
+      .select('id')
+      .single();
 
-    if (error) {
+    if (authError) {
       setMensaje('Error al registrar usuario');
-    } else {
-      setMensaje('¡Registro exitoso! Ahora puedes iniciar sesión.');
-      setLogin('');
-      setContraseña('');
-      setConfirmar('');
+      return;
     }
+
+    // 3. Crea el usuario en la tabla usuarios y guarda en localStorage
+    const { data: usuarioData, error: usuarioError } = await supabase
+      .from('usuarios')
+      .insert([{ nombre: login, auth_id: authData.id }])
+      .select()
+      .single();
+
+    if (usuarioError) {
+      setMensaje('Error al crear usuario en la tabla usuarios');
+      return;
+    }
+
+    // 4. Guarda el usuario en localStorage
+    localStorage.setItem('usuario', JSON.stringify(usuarioData));
+
+    setMensaje('¡Registro exitoso! Ahora puedes iniciar sesión.');
+    setLogin('');
+    setContraseña('');
+    setConfirmar('');
   };
 
   return (

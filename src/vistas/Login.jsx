@@ -14,6 +14,7 @@ export default function Login() {
     e.preventDefault();
     console.log('handleLogin ejecutado', login, contraseña);
 
+    // 1. Buscar usuario en user_auth
     const { data: usuarioAuth, error } = await supabase
       .from('user_auth')
       .select('id, login')
@@ -28,6 +29,7 @@ export default function Login() {
       return;
     }
 
+    // 2. Buscar usuario en la tabla usuarios usando auth_id
     const { data: usuarioPerfil, error: errorPerfil } = await supabase
       .from('usuarios')
       .select('*')
@@ -36,10 +38,13 @@ export default function Login() {
 
     console.log('Resultado usuarios:', usuarioPerfil, errorPerfil);
 
-    localStorage.setItem('usuario', JSON.stringify({
-      auth: usuarioAuth,
-      perfil: usuarioPerfil
-    }));
+    if (!usuarioPerfil) {
+      setMensaje('No se encontró el perfil del usuario.');
+      return;
+    }
+
+    // 3. Guardar el usuario de la tabla usuarios en localStorage
+    localStorage.setItem('usuario', JSON.stringify(usuarioPerfil));
     navigate('/Home');
   };
 
