@@ -1,45 +1,80 @@
-import { Link } from "react-router-dom";
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import supabase from '../supabaseClient';
 
 export default function Login() {
-    const styles = {
-        body: {
-            backgroundColor: '#f4f4f9',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            margin: 0,
-        },
-        loginContainer: {
-            backgroundColor: 'white',
-            padding: '30px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            width: '100%',
-            maxWidth: '400px',
-        },
-    };
-    
-    return (
-        <div style={styles.body}>
-            <div style={styles.loginContainer} className="login-container">
-                <h2 className="text-center mb-4">Iniciar Sesión</h2>
-                <form>
-                    <div className="mb-3">
-                        <label htmlFor="username" className="form-label">Usuario</label>
-                        <input type="text" className="form-control" id="username" placeholder="Ingresa tu usuario" required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Contraseña</label>
-                        <input type="password" className="form-control" id="password" placeholder="Ingresa tu contraseña" required />
-                    </div>
-                    <button type="submit" className="btn btn-primary w-100">Ingresar</button>
-                </form>
-                <div className="text-center mt-3">
-                    <Link to="/Registro" className="text-decoration-none">¿No tienes una cuenta? Regístrate</Link>
-                </div>
-            </div>
-        </div>
-    );
+  const [login, setLogin] = useState('');
+  const [contraseña, setContraseña] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const navigate = useNavigate();
+
+  console.log('Componente Login renderizado');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log('handleLogin ejecutado', login, contraseña);
+
+    const { data: usuarioAuth, error } = await supabase
+      .from('user_auth')
+      .select('id, login')
+      .eq('login', login)
+      .eq('contraseña', contraseña)
+      .maybeSingle();
+
+    console.log('Resultado user_auth:', usuarioAuth, error);
+
+    if (!usuarioAuth) {
+      setMensaje('Usuario o contraseña incorrectos');
+      return;
+    }
+
+    const { data: usuarioPerfil, error: errorPerfil } = await supabase
+      .from('usuarios')
+      .select('*')
+      .eq('auth_id', usuarioAuth.id)
+      .maybeSingle();
+
+    console.log('Resultado usuarios:', usuarioPerfil, errorPerfil);
+
+    localStorage.setItem('usuario', JSON.stringify({
+      auth: usuarioAuth,
+      perfil: usuarioPerfil
+    }));
+    navigate('/Home');
+  };
+
+  return (
+    <form onSubmit={handleLogin} className="container my-5" style={{maxWidth: 400}}>
+      <h2>Iniciar sesión</h2>
+      <input
+        type="text"
+        name="username"
+        className="form-control my-2"
+        placeholder="Usuario"
+        value={login}
+        onChange={e => setLogin(e.target.value)}
+        required
+        autoComplete="username"
+      />
+      <input
+        type="password"
+        name="current-password"
+        className="form-control my-2"
+        placeholder="Contraseña"
+        value={contraseña}
+        onChange={e => setContraseña(e.target.value)}
+        required
+        autoComplete="current-password"
+      />
+      <button className="btn btn-success w-100" type="submit">Entrar</button>
+      <button
+        type="button"
+        className="btn btn-link w-100 mt-2"
+        onClick={() => navigate('/Registro')}
+      >
+        ¿No tienes cuenta? Regístrate aquí
+      </button>
+      {mensaje && <div className="alert alert-info mt-2">{mensaje}</div>}
+    </form>
+  );
 }

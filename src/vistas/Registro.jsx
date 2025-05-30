@@ -1,52 +1,88 @@
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import supabase from '../supabaseClient';
 
 export default function Registro() {
-    const styles = {
-        body: {
-            backgroundColor: '#f4f4f9',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh',
-            margin: 0,
-        },
-        registerContainer: {
-            backgroundColor: 'white',
-            padding: '30px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-            width: '100%',
-            maxWidth: '400px',
-        },
-    };
-    
-    return (
-        <div style={styles.body}>
-            <div style={styles.registerContainer} className="register-container">
-                <h2 className="text-center mb-4">Crear Cuenta</h2>
-                <form>
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Nombre Completo</label>
-                        <input type="text" className="form-control" id="name" placeholder="Ingresa tu nombre completo" required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Correo Electrónico</label>
-                        <input type="email" className="form-control" id="email" placeholder="Ingresa tu correo electrónico" required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Contraseña</label>
-                        <input type="password" className="form-control" id="password" placeholder="Ingresa tu contraseña" required />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="confirm-password" className="form-label">Confirmar Contraseña</label>
-                        <input type="password" className="form-control" id="confirm-password" placeholder="Confirma tu contraseña" required />
-                    </div>
-                    <button type="submit" className="btn btn-primary w-100">Registrarse</button>
-                </form>
-                <div className="text-center mt-3">
-                    <Link to="/Login" className="text-decoration-none">¿Ya tienes una cuenta? Inicia sesión</Link>
-                </div>
-            </div>
-        </div>
-    );
+  const [login, setLogin] = useState('');
+  const [contraseña, setContraseña] = useState('');
+  const [confirmar, setConfirmar] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    if (contraseña !== confirmar) {
+      setMensaje('Las contraseñas no coinciden');
+      return;
+    }
+
+    // 1. Verifica si el usuario ya existe en user_auth
+    const { data: existente } = await supabase
+      .from('user_auth')
+      .select('id')
+      .eq('login', login)
+      .maybeSingle();
+
+    if (existente) {
+      setMensaje('El usuario ya existe');
+      return;
+    }
+
+    // 2. Crea el usuario en user_auth
+    const { error } = await supabase
+      .from('user_auth')
+      .insert([{ login, contraseña }]);
+
+    if (error) {
+      setMensaje('Error al registrar usuario');
+    } else {
+      setMensaje('¡Registro exitoso! Ahora puedes iniciar sesión.');
+      setLogin('');
+      setContraseña('');
+      setConfirmar('');
+    }
+  };
+
+  return (
+    <form onSubmit={handleRegister} className="container my-5" style={{maxWidth: 400}}>
+      <h2>Registro</h2>
+      <input
+        type="text"
+        className="form-control my-2"
+        placeholder="Usuario"
+        value={login}
+        onChange={e => setLogin(e.target.value)}
+        required
+        autoComplete="username"
+      />
+      <input
+        type="password"
+        className="form-control my-2"
+        placeholder="Contraseña"
+        value={contraseña}
+        onChange={e => setContraseña(e.target.value)}
+        required
+        autoComplete="new-password"
+      />
+      <input
+        type="password"
+        className="form-control my-2"
+        placeholder="Confirmar contraseña"
+        value={confirmar}
+        onChange={e => setConfirmar(e.target.value)}
+        required
+        autoComplete="new-password"
+      />
+      <button className="btn btn-primary w-100" type="submit">Registrarse</button>
+      <button
+        type="button"
+        className="btn btn-link w-100 mt-2"
+        onClick={() => navigate('/Login')}
+      >
+        ¿Ya tienes cuenta? Inicia sesión aquí
+      </button>
+      {mensaje && <div className="alert alert-info mt-2">{mensaje}</div>}
+    </form>
+  );
 }

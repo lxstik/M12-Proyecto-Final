@@ -4,8 +4,20 @@ export default function Header() {
     const location = useLocation();
     const hiddenRoutes = ['/Login', '/Registro'];
 
-    // Si estás en una ruta donde no quieres mostrar el header, retorna null
     if (hiddenRoutes.includes(location.pathname)) return null;
+
+    let usuario = null;
+    try {
+        usuario = JSON.parse(localStorage.getItem('usuario'));
+    } catch (e) {
+        usuario = null;
+    }
+
+    // Mostrar el login si no hay perfil con nombre
+    const nombre = usuario?.perfil?.nombre || usuario?.auth?.login || 'Usuario';
+    const avatar = usuario?.perfil?.avatar && usuario.perfil.avatar.trim() !== ''
+        ? usuario.perfil.avatar
+        : './public/icons/cuenta.png';
 
     return (
         <header className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginBottom: '170px' }}>
@@ -17,7 +29,6 @@ export default function Header() {
                             <img src="./public/logo.png" alt="Logo" style={{ width: '70px', borderRadius: '10px' }} />
                         </Link>
                     </div>
-
                     {/* Barra de búsqueda */}
                     <div className="col-6 position-relative">
                         <input 
@@ -45,16 +56,15 @@ export default function Header() {
                             color: '#aaa',  
                         }}></i>
                     </div>
-
                     {/* Usuario */}
                     <div className="col-3 text-center d-flex align-items-center justify-content-center">
                         <Link to="/PerfilUsuario" className="text-decoration-none d-flex align-items-center">
                             <img 
-                                src="./public/icons/cuenta.png" 
+                                src={avatar}
                                 alt="Cuenta" 
                                 style={{ width: '70px', marginRight: '10px', borderRadius: '50%' }} 
                             />
-                            <p style={{ fontSize: '18px', marginBottom: '0', fontWeight: '600' }}>Usuario</p>
+                            <p style={{ fontSize: '18px', marginBottom: '0', fontWeight: '600' }}>{nombre}</p>
                         </Link>
                     </div>
                 </div>
