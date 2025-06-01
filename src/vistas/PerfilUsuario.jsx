@@ -13,7 +13,6 @@ export default function PerfilUsuario() {
         usuario = null;
     }
 
-    // Datos iniciales del usuario loggeado
     const initialUser = {
         nombre: usuario?.perfil?.nombre || usuario?.auth?.login || usuario?.nombre || 'Usuario',
         ubicacion: usuario?.perfil?.ubicacion || 'Ubicación',
@@ -38,10 +37,11 @@ export default function PerfilUsuario() {
     const sectionRef = useRef(null);
     const [value, setValue] = useState(5);
 
-    // Productos en venta del usuario
     const [productos, setProductos] = useState([]);
-
     const navigate = useNavigate();
+
+    // NUEVO ESTADO: Comentarios (pero sin inputs de nuevo comentario)
+    const [comentarios, setComentarios] = useState([]);
 
     // Obtener productos del usuario desde Supabase
     useEffect(() => {
@@ -54,6 +54,33 @@ export default function PerfilUsuario() {
             if (!error) setProductos(data);
         };
         fetchProductos();
+    }, [usuario]);
+
+    // Obtener comentarios del usuario
+    useEffect(() => {
+        const fetchComentarios = async () => {
+            if (!usuario?.id) return;
+            // Traemos comentarios y el nombre del usuario autor (JOIN a usuarios)
+            const { data, error } = await supabase
+                .from('comentarios_usuarios')
+                .select(`
+                    id,
+                    titulo,
+                    valoracion,
+                    comentario,
+                    usuarios_id,
+                    usuarios (nombre, avatar)
+                `)
+                .eq('usuarios_id', usuario.id)
+                .order('id', { ascending: false });
+
+            if (error) {
+                console.error('Error al cargar comentarios:', error);
+            } else {
+                setComentarios(data || []);
+            }
+        };
+        fetchComentarios();
     }, [usuario]);
 
     useEffect(() => {
@@ -69,44 +96,90 @@ export default function PerfilUsuario() {
         };
     }, []);
 
-    // Maneja cambios en los inputs
+    // Función para actualizar usuario en Supabase
+    const actualizarUsuarioSupabase = async (campo, valor) => {
+      if (!usuario?.id) return;
+
+      const { data, error } = await supabase
+        .from('usuarios')
+        .update({ [campo]: valor })
+        .eq('id', usuario.id);
+
+      if (error) {
+        console.error('Error al actualizar usuario en Supabase:', error);
+      } else {
+        console.log('Usuario actualizado en Supabase:', data);
+      }
+    };
+
+    // Función para eliminar producto de Supabase y estado local
+    const handleEliminarProducto = async (productoId) => {
+        if (!productoId) return;
+
+        const confirmacion = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
+        if (!confirmacion) return;
+
+        const { error } = await supabase
+            .from('productos')
+            .delete()
+            .eq('id', productoId);
+
+        if (error) {
+            alert('Error al eliminar el producto: ' + error.message);
+            console.error(error);
+            return;
+        }
+
+        setProductos((prevProductos) => prevProductos.filter(prod => prod.id !== productoId));
+    };
+
     const handleInputChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     };
 
-    // Guardar cambios
-    const handleGuardar = (campo) => {
+    const handleGuardar = async (campo) => {
         const nuevoUsuario = { ...user, [campo]: inputs[campo] };
         setUser(nuevoUsuario);
         setEditando({ ...editando, [campo]: false });
 
-        // Actualiza localStorage para persistencia
         if (usuario) {
             if (!usuario.perfil) usuario.perfil = {};
             usuario.perfil[campo] = inputs[campo];
             localStorage.setItem('usuario', JSON.stringify(usuario));
         }
+
+        await actualizarUsuarioSupabase(campo, inputs[campo]);
     };
 
-    // Maneja cambio de foto
-    const handleFotoChange = (e) => {
+    const handleFotoChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onloadend = () => {
+            reader.onloadend = async () => {
                 setUser({ ...user, foto: reader.result });
-                // Guarda la foto en localStorage
                 if (usuario) {
                     if (!usuario.perfil) usuario.perfil = {};
                     usuario.perfil.avatar = reader.result;
                     localStorage.setItem('usuario', JSON.stringify(usuario));
+                }
+
+                if (usuario?.id) {
+                    const { data, error } = await supabase
+                      .from('usuarios')
+                      .update({ avatar: reader.result })
+                      .eq('id', usuario.id);
+
+                    if (error) {
+                      console.error('Error actualizando avatar en Supabase:', error);
+                    } else {
+                      console.log('Avatar actualizado en Supabase:', data);
+                    }
                 }
             };
             reader.readAsDataURL(file);
         }
     };
 
-    // Botón de logout
     const handleLogout = () => {
         localStorage.removeItem('usuario');
         navigate('/Login');
@@ -115,14 +188,12 @@ export default function PerfilUsuario() {
     return (
         <>
             <main className="container my-5">
-                {/* Botón de logout */}
                 <div className="text-end mb-3">
                     <button className="btn btn-danger" onClick={handleLogout}>
                         Cerrar sesión
                     </button>
                 </div>
 
-                {/* Perfil del usuario */}
                 <section className="row g-4 align-items-center mb-5">
                     <div className="col-md-4 text-center">
                         <img
@@ -143,7 +214,6 @@ export default function PerfilUsuario() {
                     </div>
 
                     <div className="col-md-5">
-                        {/* Nombre */}
                         <div className="mb-3 d-flex justify-content-between align-items-center">
                             {editando.nombre ? (
                                 <>
@@ -163,7 +233,6 @@ export default function PerfilUsuario() {
                                 </>
                             )}
                         </div>
-                        {/* Ubicación */}
                         <div className="mb-3 d-flex justify-content-between align-items-center">
                             {editando.ubicacion ? (
                                 <>
@@ -183,7 +252,6 @@ export default function PerfilUsuario() {
                                 </>
                             )}
                         </div>
-                        {/* Descripción */}
                         <div className="d-flex justify-content-between align-items-center">
                             {editando.descripcion ? (
                                 <>
@@ -211,7 +279,6 @@ export default function PerfilUsuario() {
                     </div>
                 </section>
 
-                {/* Productos en venta */}
                 <section ref={sectionRef} className="mt-5">
                     <h2 className="text-center mb-4">Productos en Venta</h2>
                     <div className="row">
@@ -227,8 +294,8 @@ export default function PerfilUsuario() {
                                     timeout={1000 + index * 500}
                                 >
                                     <div className="col-12 col-sm-6 col-md-3 mb-4">
-                                        <Link to={`/Producto/${producto.id}`} className="text-decoration-none">
-                                            <div className="card h-100 shadow-sm">
+                                        <div className="card h-100 shadow-sm d-flex flex-column">
+                                            <Link to={`/Producto/${producto.id}`} className="text-decoration-none flex-grow-1">
                                                 <img
                                                     src={producto.imagen_url || "./public/gameboy.jpg"}
                                                     className="card-img-top"
@@ -239,8 +306,16 @@ export default function PerfilUsuario() {
                                                     <h4 className="text-primary">{producto.precio ? `${producto.precio}€` : "Precio"}</h4>
                                                     <p className="card-text">{producto.descripcion || "Descripción del producto"}</p>
                                                 </div>
-                                            </div>
-                                        </Link>
+                                            </Link>
+
+                                            {/* Botón Eliminar */}
+                                            <button
+                                                className="btn btn-danger mt-auto mx-3 mb-3"
+                                                onClick={() => handleEliminarProducto(producto.id)}
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </div>
                                     </div>
                                 </Grow>
                             ))
@@ -253,28 +328,36 @@ export default function PerfilUsuario() {
                     </div>
                 </section>
 
-                {/* Comentarios */}
+                {/* Comentarios y Valoraciones */}
                 <section className="mt-5">
                     <h2 className="text-center mb-4">Valoraciones y Comentarios</h2>
-                    {[1, 2, 3].map((item) => (
-                        <div key={item} className="border rounded p-3 mb-4">
-                            <div className="row align-items-center">
-                                <div className="col-md-4">
-                                    <h5 className="mb-1">Título comentario</h5>
-                                    <p className="mb-0">Comentario</p>
-                                </div>
-                                <div className="col-md-8 d-flex align-items-center justify-content-end gap-3">
-                                    <Rating name="read-only" value={value} readOnly />
-                                    <img
-                                        src="./public/icons/cuenta.png"
-                                        alt="Perfil"
-                                        style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
-                                    />
-                                    <p className="mb-0">Nombre Usuario</p>
+
+                    {/* Aquí NO mostramos formulario para nuevo comentario */}
+
+                    {/* Lista de comentarios */}
+                    {comentarios.length === 0 ? (
+                        <p className="text-center text-muted">No hay comentarios aún.</p>
+                    ) : (
+                        comentarios.map(({ id, titulo, comentario, valoracion, usuarios }) => (
+                            <div key={id} className="border rounded p-3 mb-4">
+                                <div className="row align-items-center">
+                                    <div className="col-md-4">
+                                        <h5 className="mb-1">{titulo || 'Sin título'}</h5>
+                                        <p className="mb-0">{comentario}</p>
+                                    </div>
+                                    <div className="col-md-8 d-flex align-items-center justify-content-end gap-3">
+                                        <Rating name={`rating-${id}`} value={valoracion} readOnly />
+                                        <img
+                                            src={usuarios?.avatar || "./public/icons/cuenta.png"}
+                                            alt="Perfil"
+                                            style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
+                                        />
+                                        <p className="mb-0">{usuarios?.nombre || 'Usuario'}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    )}
                 </section>
             </main>
         </>

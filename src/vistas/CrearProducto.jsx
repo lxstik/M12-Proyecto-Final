@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import supabase from '../supabaseClient';
 
+const TAGS_VALIDOS = [
+  "Decoración",
+  "Comics",
+  "Videojuegos",
+  "Componentes PC",
+  "Consolas",
+  "Merchandising",
+  "Cuentas",
+  "Periféricos",
+  "Ropa",
+  "Juegos de mesa",
+];
+
 export default function CrearProducto() {
     const [tags, setTags] = useState([]);
     const [imagen, setImagen] = useState(null);
@@ -8,6 +21,7 @@ export default function CrearProducto() {
     const [descripcion, setDescripcion] = useState('');
     const [precio, setPrecio] = useState('');
     const [estadoCondiciones, setEstadoCondiciones] = useState('Nuevo');
+    const [destacado, setDestacado] = useState(false);
     const [mensaje, setMensaje] = useState('');
 
     const condiciones = ['Nuevo', 'ComoNuevo', 'CondicionesAceptables', 'Malo'];
@@ -39,7 +53,6 @@ export default function CrearProducto() {
             usuario = null;
         }
 
-        // Asegúrate de que este id existe en la tabla usuarios
         const vendedor_id =
             usuario?.id ||
             usuario?.perfil?.id ||
@@ -52,17 +65,22 @@ export default function CrearProducto() {
             return;
         }
 
-        // Debug: muestra el id que se va a usar
-        // console.log('vendedor_id:', vendedor_id);
-        console.log('vendedor_id:', vendedor_id);
-        // Insertar en Supabase
+        // Validar que todos los tags estén dentro de TAGS_VALIDOS
+        const invalidTags = tags.filter(tag => !TAGS_VALIDOS.includes(tag));
+        if (invalidTags.length > 0) {
+            setMensaje(`Tags inválidos detectados: ${invalidTags.join(', ')}`);
+            return;
+        }
+
         const { error } = await supabase.from('productos').insert([{
+            nombre: titulo,
             descripcion: descripcion,
             tags: tags,
             precio: parseFloat(precio),
             estado_condiciones: estadoCondiciones,
             vendedor_id: vendedor_id,
-            imagen_url: imagen
+            imagen_url: imagen,
+            destacado: destacado
         }]);
 
         if (error) {
@@ -77,6 +95,7 @@ export default function CrearProducto() {
         setEstadoCondiciones('Nuevo');
         setTags([]);
         setImagen(null);
+        setDestacado(false);
     };
 
     return (
@@ -150,7 +169,7 @@ export default function CrearProducto() {
                             <div className="form-group mb-4">
                                 <label htmlFor="tags">Tags</label>
                                 <div className="tags-container d-flex flex-wrap">
-                                    {['Merch', 'PC', 'Comics', 'Figuras', 'Periféricos', 'Consolas', 'Ropa', 'Juegos de mesa', 'Cuentas', 'Decoración', 'Videojuegos', 'Promoción', 'Negociación', 'Buen estado', 'Nuevo', 'Oferta 2x1'].map((tag) => (
+                                    {TAGS_VALIDOS.map((tag) => (
                                         <button
                                             type="button"
                                             key={tag}
@@ -175,6 +194,20 @@ export default function CrearProducto() {
                                     onChange={e => setPrecio(e.target.value)}
                                     required
                                 />
+                            </div>
+
+                            {/* Nuevo checkbox destacado */}
+                            <div className="form-group mb-4 form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="destacado"
+                                    checked={destacado}
+                                    onChange={(e) => setDestacado(e.target.checked)}
+                                />
+                                <label className="form-check-label" htmlFor="destacado">
+                                    Marcar como producto destacado
+                                </label>
                             </div>
 
                             {/* Botón para subir */}

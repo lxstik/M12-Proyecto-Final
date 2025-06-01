@@ -35,9 +35,10 @@ function App() {
               <Routes>
                 <Route path="/Home" element={<Home />} />
                 <Route path="/PerfilUsuario" element={<PerfilUsuario />} />
-                <Route path="/PerfilVendedor" element={<PerfilVendedor />} />
+                {/* Cambié esta ruta para que reciba el parámetro vendedorId */}
+                <Route path="/PerfilVendedor/:vendedorId" element={<PerfilVendedor />} />
                 <Route path="/CrearProducto" element={<CrearProducto />} />
-                <Route path="/Producto" element={<Producto />} />
+                <Route path="/Producto/:id" element={<Producto />} />
                 <Route path="/Chat" element={<Chat />} />
                 <Route path="/Comentario" element={<Comentario />} />
                 <Route path="/Resultados" element={<Resultados />} />

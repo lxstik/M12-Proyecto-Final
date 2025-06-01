@@ -13,11 +13,10 @@ export default function Header() {
         usuario = null;
     }
 
-    // Mostrar el login si no hay perfil con nombre
-    const nombre = usuario?.perfil?.nombre || usuario?.auth?.login || 'Usuario';
-    const avatar = usuario?.perfil?.avatar && usuario.perfil.avatar.trim() !== ''
-        ? usuario.perfil.avatar
-        : './public/icons/cuenta.png';
+    const nombre = usuario?.nombre || 'Usuario';
+    const avatar = usuario?.avatar && usuario.avatar.trim() !== ''
+        ? usuario.avatar
+        : '/icons/cuenta.png';  // ruta correcta para imagen por defecto
 
     return (
         <header className="py-4" style={{ backgroundColor: '#B0B0B0', color: '#1a1a1a', marginBottom: '170px' }}>
@@ -26,7 +25,7 @@ export default function Header() {
                     {/* Logo */}
                     <div className="col-3 text-center">
                         <Link to="/Home" className="text-decoration-none">
-                            <img src="./public/logo.png" alt="Logo" style={{ width: '70px', borderRadius: '10px' }} />
+                            <img src="/logo.png" alt="Logo" style={{ width: '70px', borderRadius: '10px' }} />
                         </Link>
                     </div>
                     {/* Barra de búsqueda */}
