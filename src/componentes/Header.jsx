@@ -4,9 +4,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 export default function Header() {
     const location = useLocation();
     const navigate = useNavigate();
-    const hiddenRoutes = ['/Login', '/Registro'];
+    const [busqueda, setBusqueda] = useState('');
 
-    if (hiddenRoutes.includes(location.pathname)) return null;
+    const hiddenRoutes = ['/Login', '/Registro'];
 
     let usuario = null;
     try {
@@ -20,8 +20,6 @@ export default function Header() {
         ? usuario.avatar
         : '/icons/cuenta.png';
 
-    const [busqueda, setBusqueda] = useState('');
-
     const realizarBusqueda = () => {
         if (busqueda.trim() !== '') {
             navigate(`/Resultados?busqueda=${encodeURIComponent(busqueda.trim())}`);
@@ -33,6 +31,8 @@ export default function Header() {
             realizarBusqueda();
         }
     };
+
+    if (hiddenRoutes.includes(location.pathname)) return null;
 
     return (
         <header
