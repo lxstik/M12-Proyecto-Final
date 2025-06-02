@@ -33,10 +33,12 @@ export default function PerfilVendedor() {
         async function fetchProductos() {
             if (!vendedorId) return;
 
+            // Solo productos NO vendidos (vendido = false o null)
             const { data, error } = await supabase
                 .from('productos')
                 .select('*')
-                .eq('vendedor_id', vendedorId);
+                .eq('vendedor_id', vendedorId)
+                .in('vendido', [false, null]);
 
             if (error) {
                 console.error("Error al cargar productos del vendedor:", error);
@@ -57,6 +59,7 @@ export default function PerfilVendedor() {
 
             if (errorProd || !productosVendedor || productosVendedor.length === 0) {
                 setComentarios([]);
+                setValoracionComentario(0);
                 return;
             }
 
@@ -70,6 +73,8 @@ export default function PerfilVendedor() {
 
             if (errorComentarios) {
                 console.error("Error al cargar comentarios:", errorComentarios);
+                setComentarios([]);
+                setValoracionComentario(0);
                 return;
             }
 

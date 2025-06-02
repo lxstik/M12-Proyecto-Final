@@ -24,6 +24,7 @@ function useQuery() {
 export default function Resultados() {
   const query = useQuery();
   const tag = query.get('tag');
+  const busqueda = query.get('busqueda');
 
   const [productos, setProductos] = useState([]);
 
@@ -44,7 +45,8 @@ export default function Resultados() {
       const { data, error } = await supabase
         .from('productos')
         .select('*')
-        .contains('tags', [normalizado]);
+        .contains('tags', [normalizado])
+        .or('vendido.is.null,vendido.eq.false'); // filtramos vendidos
 
       if (error) {
         console.error('Error al cargar productos:', error);
@@ -54,17 +56,40 @@ export default function Resultados() {
       }
     };
 
-    fetchByTag();
-  }, [tag]);
+    const fetchByBusqueda = async () => {
+      if (!busqueda) return;
+
+      const { data, error } = await supabase
+        .from('productos')
+        .select('*')
+        .ilike('nombre', `%${busqueda}%`)
+        .or('vendido.is.null,vendido.eq.false'); // filtramos vendidos
+
+      if (error) {
+        console.error('Error al cargar productos:', error);
+        setProductos([]);
+      } else {
+        setProductos(data);
+      }
+    };
+
+    if (tag) {
+      fetchByTag();
+    } else if (busqueda) {
+      fetchByBusqueda();
+    } else {
+      setProductos([]);
+    }
+  }, [tag, busqueda]);
 
   return (
     <main className="container my-5">
       <h1 className="text-center mb-4 text-uppercase fw-bold sectionText">
-        Resultados para: <span className="text-primary">{tag}</span>
+        Resultados para: <span className="text-primary">{tag || busqueda}</span>
       </h1>
 
       {productos.length === 0 ? (
-        <p className="text-center">No se encontraron productos con esta etiqueta.</p>
+        <p className="text-center">No se encontraron productos con esta búsqueda.</p>
       ) : (
         <Box>
           <div className="row g-4">
