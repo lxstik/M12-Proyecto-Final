@@ -51,16 +51,16 @@ export default function Footer() {
                             <h1 className="mb-3">Síguenos</h1>
                             <div className="d-flex justify-content-center">
                                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                    <img src="/icons/instagram.png" alt="Instagram" className="mx-2" style={{ width: '40px' }} />
+                                    <img src="/instagram.png" alt="Instagram" className="mx-2" style={{ width: '40px' }} />
                                 </a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                                    <img src="/icons/facebook.png" alt="Facebook" className="mx-2" style={{ width: '40px' }} />
+                                    <img src="/facebook.png" alt="Facebook" className="mx-2" style={{ width: '40px' }} />
                                 </a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                                    <img src="/icons/youtube.png" alt="YouTube" className="mx-2" style={{ width: '40px' }} />
+                                    <img src="/youtube.png" alt="YouTube" className="mx-2" style={{ width: '40px' }} />
                                 </a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                                    <img src="/icons/twitter.png" alt="Twitter" className="mx-2" style={{ width: '40px' }} />
+                                    <img src="/twitter.png" alt="Twitter" className="mx-2" style={{ width: '40px' }} />
                                 </a>
                             </div>
                         </div>

@@ -106,7 +106,7 @@ export default function PerfilVendedor() {
             <section className="row g-4 align-items-center mb-5">
                 <div className="col-md-4 text-center">
                     <img
-                        src={vendedor.avatar && vendedor.avatar.length > 0 ? vendedor.avatar : "/icons/cuenta.png"}
+                        src={vendedor.avatar && vendedor.avatar.length > 0 ? vendedor.avatar : "/cuenta.png"}
                         alt="Foto de perfil"
                         style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover' }}
                     />
@@ -174,7 +174,7 @@ export default function PerfilVendedor() {
                                 <div className="card p-3 shadow-sm h-100">
                                     <div className="d-flex align-items-center mb-3">
                                         <img
-                                            src={c.usuarios?.avatar || "/icons/cuenta.png"}
+                                            src={c.usuarios?.avatar || "/cuenta.png"}
                                             alt="Avatar"
                                             className="me-3"
                                             style={{ width: "50px", height: "50px", borderRadius: "50%", objectFit: "cover" }}

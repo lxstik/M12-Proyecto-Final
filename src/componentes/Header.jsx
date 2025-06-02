@@ -18,7 +18,7 @@ export default function Header() {
     const nombre = usuario?.nombre || 'Usuario';
     const avatar = usuario?.avatar && usuario.avatar.trim() !== ''
         ? usuario.avatar
-        : '/icons/cuenta.png';
+        : '/cuenta.png';
 
     const realizarBusqueda = () => {
         if (busqueda.trim() !== '') {

@@ -18,7 +18,7 @@ export default function PerfilUsuario() {
         descripcion: usuario?.perfil?.descripcion || 'Descripción',
         foto: usuario?.perfil?.avatar && usuario.perfil.avatar.trim() !== ''
             ? usuario.perfil.avatar
-            : './public/icons/cuenta.png'
+            : './public/cuenta.png'
     };
 
     const [user, setUser] = useState(initialUser);
@@ -325,7 +325,7 @@ export default function PerfilUsuario() {
                             <div className="card-body">
                                 <div className="d-flex align-items-center mb-2">
                                     <img
-                                        src={comentario.usuarios?.avatar || "./public/icons/cuenta.png"}
+                                        src={comentario.usuarios?.avatar || "./public/cuenta.png"}
                                         alt={comentario.usuarios?.nombre || 'Usuario'}
                                         style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}
                                         className="me-3"
