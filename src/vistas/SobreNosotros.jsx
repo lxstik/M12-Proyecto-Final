@@ -14,7 +14,7 @@ export default function SobreNosotros() {
                 </div>
 
                 <p className="lead text-justify">
-                    Somos <strong>(Nombre de la empresa pendiente)</strong>, una iniciativa nacida de la pasión por la cultura geek, la tecnología y el coleccionismo. Nos dedicamos a conectar a fans con productos únicos y de calidad: desde gadgets innovadores hasta merchandising exclusivo y rarezas geek.
+                    Somos <strong>Wallapopa</strong>, una iniciativa nacida de la pasión por la cultura geek, la tecnología y el coleccionismo. Nos dedicamos a conectar a fans con productos únicos y de calidad: desde gadgets innovadores hasta merchandising exclusivo y rarezas geek.
                 </p>
 
                 <p className="text-justify">

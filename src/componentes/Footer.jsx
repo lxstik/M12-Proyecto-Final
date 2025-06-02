@@ -20,10 +20,10 @@ export default function Footer() {
                                 Crea un ticket
                             </Link>
                             <a
-                                href="mailto:empresaventa@gmail.com"
+                                href="mailto:wallapopa@gmail.com"
                                 className="text-decoration-none"
                             >
-                                empresaventa@gmail.com
+                                wallapopa@gmail.com
                             </a>
                         </div>
                         <div className="col-md-4 text-center text-md-left mb-3 mb-md-0">
@@ -33,12 +33,6 @@ export default function Footer() {
                                 className="text-decoration-none"
                             >
                                 Sobre nosotros
-                            </Link>
-                            <Link
-                                to="/TrabajaConNosotros"
-                                className="text-decoration-none"
-                            >
-                                Trabaja con nosotros
                             </Link>
                             <Link
                                 to="/PoliticaPrivacidad"
