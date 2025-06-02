@@ -6,7 +6,7 @@ export default function SobreNosotros() {
             <div className="card shadow-lg p-4 rounded-4 bg-light">
                 <div className="text-center mb-4">
                     <img
-                        src="../public/logo.png"
+                        src="/logo.png"
                         alt="Logo de la empresa"
                         style={{ width: '250px' }}
                         className="img-fluid"

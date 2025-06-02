@@ -18,7 +18,7 @@ export default function PerfilUsuario() {
         descripcion: usuario?.perfil?.descripcion || 'Descripción',
         foto: usuario?.perfil?.avatar && usuario.perfil.avatar.trim() !== ''
             ? usuario.perfil.avatar
-            : './public/cuenta.png'
+            : '/cuenta.png'
     };
 
     const [user, setUser] = useState(initialUser);
@@ -264,7 +264,7 @@ export default function PerfilUsuario() {
                                 <div className="col-12 col-sm-6 col-md-3 mb-4">
                                     <div className="card h-100 shadow-sm d-flex flex-column">
                                         <Link to={`/Producto/${producto.id}`} className="text-decoration-none flex-grow-1">
-                                            <img src={producto.imagen_url || "./public/gameboy.jpg"} className="card-img-top" alt={producto.nombre} />
+                                            <img src={producto.imagen_url || "/gameboy.jpg"} className="card-img-top" alt={producto.nombre} />
                                             <div className="card-body text-center">
                                                 <h5 className="card-title">{producto.nombre}</h5>
                                                 <h4 className="text-primary">{producto.precio}€</h4>
@@ -299,7 +299,7 @@ export default function PerfilUsuario() {
                                 <div className="col-12 col-sm-6 col-md-3 mb-4">
                                     <div className="card h-100 shadow-sm d-flex flex-column">
                                         <Link to={`/Producto/${producto.id}`} className="text-decoration-none flex-grow-1">
-                                            <img src={producto.imagen_url || "./public/gameboy.jpg"} className="card-img-top" alt={producto.nombre} />
+                                            <img src={producto.imagen_url || "/gameboy.jpg"} className="card-img-top" alt={producto.nombre} />
                                             <div className="card-body text-center">
                                                 <h5 className="card-title">{producto.nombre}</h5>
                                                 <h4 className="text-primary">{producto.precio}€</h4>
@@ -325,7 +325,7 @@ export default function PerfilUsuario() {
                             <div className="card-body">
                                 <div className="d-flex align-items-center mb-2">
                                     <img
-                                        src={comentario.usuarios?.avatar || "./public/cuenta.png"}
+                                        src={comentario.usuarios?.avatar || "/cuenta.png"}
                                         alt={comentario.usuarios?.nombre || 'Usuario'}
                                         style={{ width: '50px', height: '50px', borderRadius: '50%', objectFit: 'cover' }}
                                         className="me-3"
