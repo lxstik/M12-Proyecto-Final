@@ -6,7 +6,7 @@ export default function TerminosCondiciones() {
             <div className="card shadow p-4 bg-light rounded-4">
                 <div className="text-center mb-4">
                     <img
-                        src="../public/logo.png"
+                        src="/logo.png"
                         alt="Logo de la empresa"
                         className="img-fluid"
                         style={{ width: '250px' }}

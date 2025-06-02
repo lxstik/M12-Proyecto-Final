@@ -87,7 +87,7 @@ export default function Producto() {
         <div className="container mt-5 d-flex justify-content-center">
           <div className="card shadow-lg" style={{ width: '800px', borderRadius: '15px', overflow: 'hidden' }}>
             <img
-              src={producto.imagen_url || "../public/gameboy.jpg"}
+              src={producto.imagen_url || "/gameboy.jpg"}
               className="card-img-top"
               alt={producto.nombre || "Producto"}
             />
@@ -174,7 +174,7 @@ export default function Producto() {
                     <Link to={`/Producto/${item.id}`} className="text-decoration-none">
                       <div className="card shadow-sm border-0">
                         <img
-                          src={item.imagen_url || "../public/gameboy.jpg"}
+                          src={item.imagen_url || "/gameboy.jpg"}
                           className="card-img-top rounded-top"
                           alt={item.nombre}
                         />

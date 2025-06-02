@@ -127,37 +127,37 @@ export default function Home() {
                     <div className="row justify-content-center text-center gy-3" style={{ marginBottom: '170px' }}>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=decoracion" className="text-decoration-none">
-                                <img src="../public/decoracion.png" alt="Decoración" style={{ width: '100px' }} />
+                                <img src="/decoracion.png" alt="Decoración" style={{ width: '100px' }} />
                                 <p>Decoración</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=comics" className="text-decoration-none">
-                                <img src="../public/comic.png" alt="Comics" style={{ width: '100px' }} />
+                                <img src="/comic.png" alt="Comics" style={{ width: '100px' }} />
                                 <p>Comics</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=videojuegos" className="text-decoration-none">
-                                <img src="../public/videojuegos.png" alt="Videojuegos" style={{ width: '100px' }} />
+                                <img src="/videojuegos.png" alt="Videojuegos" style={{ width: '100px' }} />
                                 <p>Videojuegos</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=componentespc" className="text-decoration-none">
-                                <img src="../public/pc.png" alt="Componentes PC" style={{ width: '100px' }} />
+                                <img src="/pc.png" alt="Componentes PC" style={{ width: '100px' }} />
                                 <p>Componentes PC</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=consolas" className="text-decoration-none">
-                                <img src="../public/consola.png" alt="Consolas" style={{ width: '100px' }} />
+                                <img src="/consola.png" alt="Consolas" style={{ width: '100px' }} />
                                 <p>Consolas</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-2">
                             <Link to="/Resultados?tag=merchandising" className="text-decoration-none">
-                                <img src="../public/merch.png" alt="Merchandising" style={{ width: '100px' }} />
+                                <img src="/merch.png" alt="Merchandising" style={{ width: '100px' }} />
                                 <p>Merchandising</p>
                             </Link>
                         </div>
@@ -166,25 +166,25 @@ export default function Home() {
                     <div className="row justify-content-center text-center gy-3 mt-3" style={{ marginBottom: '170px' }}>
                         <div className="col-6 col-sm-4 col-md-3">
                             <Link to="/Resultados?tag=cuentas" className="text-decoration-none">
-                                <img src="../public/cuenta.png" alt="Cuentas" style={{ width: '100px' }} />
+                                <img src="/cuenta.png" alt="Cuentas" style={{ width: '100px' }} />
                                 <p>Cuentas</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-3">
                             <Link to="/Resultados?tag=perifericos" className="text-decoration-none">
-                                <img src="../public/perifericos.png" alt="Periféricos" style={{ width: '100px' }} />
+                                <img src="/perifericos.png" alt="Periféricos" style={{ width: '100px' }} />
                                 <p>Periféricos</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-3">
                             <Link to="/Resultados?tag=ropa" className="text-decoration-none">
-                                <img src="../public/ropa.png" alt="Ropa" style={{ width: '100px' }} />
+                                <img src="/ropa.png" alt="Ropa" style={{ width: '100px' }} />
                                 <p>Ropa</p>
                             </Link>
                         </div>
                         <div className="col-6 col-sm-4 col-md-3">
                             <Link to="/Resultados?tag=juegosdemesa" className="text-decoration-none">
-                                <img src="../public/mesa.png" alt="Juegos de mesa" style={{ width: '100px' }} />
+                                <img src="/mesa.png" alt="Juegos de mesa" style={{ width: '100px' }} />
                                 <p>Juegos de mesa</p>
                             </Link>
                         </div>
