@@ -13,11 +13,10 @@ export default function VistaAdmin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Obteniendo usuario actual...");
     obtenerUsuarioActual().then((data) => {
       console.log("Usuario actual:", data);
       if (!data || data.role !== "admin") {
-        navigate("/"); // Redirige a home si no es admin
+        navigate("/Home"); 
       } else {
         setUsuario(data);
       }

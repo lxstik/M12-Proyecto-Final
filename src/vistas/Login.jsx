@@ -8,7 +8,6 @@ export default function Login() {
   const [mensaje, setMensaje] = useState('');
   const navigate = useNavigate();
 
-  console.log('Componente Login renderizado');
 
   const handleLogin = async (e) => {
     e.preventDefault();

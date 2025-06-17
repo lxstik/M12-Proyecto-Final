@@ -37,13 +37,19 @@ export default function AdministrarComentarios() {
     setCargando(false);
   }
 
-  const eliminarComentario = async (id) => {
-    if (!window.confirm("Seguro que quieres eliminar este comentario?")) return;
 
-    const { error } = await supabase.from("comentarios_productos").delete().eq("id", id);
+  async function eliminarComentario(id) {
+    const confirmar = window.confirm("Seguro que quieres eliminar este comentario?");
+    if (!confirmar) return; 
+    const { error } = await supabase
+      .from("comentarios_productos")
+      .delete()
+      .eq("id", id);
+    setComentarios((comentariosAnteriores) =>
+      comentariosAnteriores.filter((comentario) => comentario.id !== id)
+    );
+  }
 
-    setComentarios((prev) => prev.filter((c) => c.id !== id));
-  };
 
   return (
     <main className="container my-5">

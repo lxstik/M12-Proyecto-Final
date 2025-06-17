@@ -19,7 +19,12 @@ export default function Header() {
     const avatar = usuario?.avatar && usuario.avatar.trim() !== ''
         ? usuario.avatar
         : '/cuenta.png';
-    const role = usuario?.role; // Extraemos el rol
+
+        
+    let role;
+    if (usuario && usuario.role) {
+        role = usuario.role;
+    }
 
     const realizarBusqueda = () => {
         if (busqueda.trim() !== '') {
@@ -35,8 +40,6 @@ export default function Header() {
 
     if (hiddenRoutes.includes(location.pathname)) return null;
 
-    // Comentario: el path para el panel admin es '/vistaAdmin'
-
     return (
         <header
             className="py-4"
@@ -44,14 +47,12 @@ export default function Header() {
         >
             <div className="container">
                 <div className="row align-items-center justify-content-between py-2">
-                    {/* Logo */}
                     <div className="col-3 text-center">
                         <Link to="/Home" className="text-decoration-none">
                             <img src="/logo.png" alt="Logo" style={{ width: '70px', borderRadius: '10px' }} />
                         </Link>
                     </div>
 
-                    {/* Barra de búsqueda */}
                     <div className="col-6 position-relative d-flex align-items-center">
                         <div style={{ position: 'relative', width: '100%' }}>
                             <input
@@ -123,7 +124,6 @@ export default function Header() {
                         </div>
                     </div>
 
-                    {/* Usuario y botón admin */}
                     <div className="col-3 text-center d-flex align-items-center justify-content-center gap-2">
                         <Link to="/PerfilUsuario" className="text-decoration-none d-flex align-items-center">
                             <img
