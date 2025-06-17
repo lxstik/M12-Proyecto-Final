@@ -10,7 +10,7 @@ export default function Home() {
     const [checkedRecientes, setCheckedRecientes] = useState(false);
 
     const [productos, setProductos] = useState([]);
-    const [ventas, setVentas] = useState([]); // para filtrar productos vendidos
+    const [ventas, setVentas] = useState([]);
 
     const refDestacados = useRef(null);
     const refParaTi = useRef(null);
@@ -18,7 +18,6 @@ export default function Home() {
 
     const [user, setUser] = useState(null);
 
-    // Obtener usuario logueado con Supabase Auth
     useEffect(() => {
         const fetchUser = async () => {
             const { data: { user } } = await supabase.auth.getUser();
@@ -27,7 +26,6 @@ export default function Home() {
         fetchUser();
     }, []);
 
-    // Observers para animar las secciones cuando entran en viewport
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -67,7 +65,6 @@ export default function Home() {
         };
     }, []);
 
-    // Fetch productos y ventas desde Supabase
     useEffect(() => {
         const fetchData = async () => {
             const { data: productosData, error: productosError } = await supabase
@@ -90,15 +87,12 @@ export default function Home() {
         fetchData();
     }, []);
 
-    // Filtrar productos que no estén vendidos
     const vendidosIds = ventas.map(v => v.producto_id);
     const productosDisponibles = productos.filter(p => !vendidosIds.includes(p.id));
 
-    // Filtrar destacados y normales
     const destacados = productosDisponibles.filter(p => p.destacado === true);
     const normales = productosDisponibles.filter(p => !p.destacado);
 
-    // Función para comprar producto
     const comprarProducto = async (productoId) => {
         if (!user) {
             alert('Debes iniciar sesión para comprar.');

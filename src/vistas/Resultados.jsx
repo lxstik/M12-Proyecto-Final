@@ -46,7 +46,7 @@ export default function Resultados() {
         .from('productos')
         .select('*')
         .contains('tags', [normalizado])
-        .or('vendido.is.null,vendido.eq.false'); // filtramos vendidos
+        .or('vendido.is.null,vendido.eq.false');
 
       if (error) {
         console.error('Error al cargar productos:', error);
@@ -63,7 +63,7 @@ export default function Resultados() {
         .from('productos')
         .select('*')
         .ilike('nombre', `%${busqueda}%`)
-        .or('vendido.is.null,vendido.eq.false'); // filtramos vendidos
+        .or('vendido.is.null,vendido.eq.false'); 
 
       if (error) {
         console.error('Error al cargar productos:', error);

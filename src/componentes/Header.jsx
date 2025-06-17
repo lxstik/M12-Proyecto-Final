@@ -19,6 +19,7 @@ export default function Header() {
     const avatar = usuario?.avatar && usuario.avatar.trim() !== ''
         ? usuario.avatar
         : '/cuenta.png';
+    const role = usuario?.role; // Extraemos el rol
 
     const realizarBusqueda = () => {
         if (busqueda.trim() !== '') {
@@ -33,6 +34,8 @@ export default function Header() {
     };
 
     if (hiddenRoutes.includes(location.pathname)) return null;
+
+    // Comentario: el path para el panel admin es '/vistaAdmin'
 
     return (
         <header
@@ -120,8 +123,8 @@ export default function Header() {
                         </div>
                     </div>
 
-                    {/* Usuario */}
-                    <div className="col-3 text-center d-flex align-items-center justify-content-center">
+                    {/* Usuario y botón admin */}
+                    <div className="col-3 text-center d-flex align-items-center justify-content-center gap-2">
                         <Link to="/PerfilUsuario" className="text-decoration-none d-flex align-items-center">
                             <img
                                 src={avatar}
@@ -130,6 +133,16 @@ export default function Header() {
                             />
                             <p style={{ fontSize: '18px', marginBottom: 0, fontWeight: '600' }}>{nombre}</p>
                         </Link>
+
+                        {role === 'admin' && (
+                            <button
+                                className="btn btn-dark btn-sm ms-2"
+                                onClick={() => navigate('/vistaAdmin')}
+                                style={{ whiteSpace: 'nowrap' }}
+                            >
+                                Admin Panel
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

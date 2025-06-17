@@ -17,7 +17,12 @@ import PoliticaPrivacidad from './vistas/PoliticaPrivacidad';
 import CrearTicket from './vistas/CrearTicket';
 import Registro from './vistas/Registro';
 import Login from './vistas/Login';
+import VistaAdmin from './vistas/vistaAdmin';
 import RutaPrivada from './componentes/RutaPrivada';
+import AdministrarProductos from './vistas/administrarProductos';
+import AdministrarUsuarios from './vistas/administrarUsuarios';
+import AdministrarComentarios from './vistas/administrarComentarios';
+
 
 function App() {
   return (
@@ -33,7 +38,6 @@ function App() {
               <Routes>
                 <Route path="/Home" element={<Home />} />
                 <Route path="/PerfilUsuario" element={<PerfilUsuario />} />
-                {/* Cambié esta ruta para que reciba el parámetro vendedorId */}
                 <Route path="/PerfilVendedor/:vendedorId" element={<PerfilVendedor />} />
                 <Route path="/CrearProducto" element={<CrearProducto />} />
                 <Route path="/Producto/:id" element={<Producto />} />
@@ -43,6 +47,10 @@ function App() {
                 <Route path="/TerminosCondiciones" element={<TerminosCondiciones />} />
                 <Route path="/PoliticaPrivacidad" element={<PoliticaPrivacidad />} />
                 <Route path="/CrearTicket" element={<CrearTicket />} />
+                <Route path="/vistaAdmin" element={<VistaAdmin />} />
+                <Route path="/administrarUsuarios" element={<AdministrarUsuarios />} />
+                <Route path="/administrarProductos" element={<AdministrarProductos />} />
+                <Route path="/administrarComentarios" element={<AdministrarComentarios />} />
               </Routes>
             </RutaPrivada>
           }

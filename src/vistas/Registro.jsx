@@ -17,7 +17,7 @@ export default function Registro() {
       return;
     }
 
-    // 1. Verifica si el usuario ya existe en user_auth
+
     const { data: existente } = await supabase
       .from('user_auth')
       .select('id')
@@ -28,8 +28,6 @@ export default function Registro() {
       setMensaje('El usuario ya existe');
       return;
     }
-
-    // 2. Crea el usuario en user_auth y obtén su id
     const { data: authData, error: authError } = await supabase
       .from('user_auth')
       .insert([{ login, contraseña }])
@@ -41,7 +39,6 @@ export default function Registro() {
       return;
     }
 
-    // 3. Crea el usuario en la tabla usuarios y guarda en localStorage
     const { data: usuarioData, error: usuarioError } = await supabase
       .from('usuarios')
       .insert([{ nombre: login, auth_id: authData.id }])
@@ -53,7 +50,6 @@ export default function Registro() {
       return;
     }
 
-    // 4. Guarda el usuario en localStorage
     localStorage.setItem('usuario', JSON.stringify(usuarioData));
 
     setMensaje('¡Registro exitoso! Ahora puedes iniciar sesión.');

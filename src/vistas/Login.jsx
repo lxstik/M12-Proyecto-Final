@@ -14,7 +14,6 @@ export default function Login() {
     e.preventDefault();
     console.log('handleLogin ejecutado', login, contraseña);
 
-    // 1. Buscar usuario en user_auth
     const { data: usuarioAuth, error } = await supabase
       .from('user_auth')
       .select('id, login')
@@ -29,7 +28,6 @@ export default function Login() {
       return;
     }
 
-    // 2. Buscar usuario en la tabla usuarios usando auth_id
     const { data: usuarioPerfil, error: errorPerfil } = await supabase
       .from('usuarios')
       .select('*')
@@ -43,7 +41,6 @@ export default function Login() {
       return;
     }
 
-    // 3. Guardar el usuario de la tabla usuarios en localStorage
     localStorage.setItem('usuario', JSON.stringify(usuarioPerfil));
     navigate('/Home');
   };
@@ -77,7 +74,7 @@ export default function Login() {
         className="btn btn-link w-100 mt-2"
         onClick={() => navigate('/Registro')}
       >
-        ¿No tienes cuenta? Regístrate aquí
+        No tienes cuenta? Regístrate aquí
       </button>
       {mensaje && <div className="alert alert-info mt-2">{mensaje}</div>}
     </form>
